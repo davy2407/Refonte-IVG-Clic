@@ -15,11 +15,8 @@ import QuestionConsulationNoConv from "@components/Questions/QuestionModal/Quest
 import NoConvNoConsultation from "@components/Reponses/NoConvNoConsultation";
 import QuestionAttestationFormation from "@components/Questions/QuestionModal/QuestionAttestationFormation";
 import NoConsultationNoAttInfo from "@components/Reponses/NoConsultationNoAttInfo";
-
-
-
-
-
+import ConsultationModel from "@components/Consultations/ConsultationModel";
+import PremiereConsultationMajAno from "@components/Consultations/PremiereConsultationMajAno";
 
 
 
@@ -31,16 +28,6 @@ function MidSection(props) {
 
 
 
-
-
-
-
-
-
-
-
-
-
  const [toggle, setToggle] = useState(false)
 
 
@@ -49,18 +36,7 @@ function MidSection(props) {
 }
 
 
-
-
-
-
-
-
-
-  
-
  ///// liste d'objet contenant les texte de démarrages à afficher
-
-
 
 
  const [ listeText, setListeText] = useState(
@@ -84,7 +60,6 @@ function MidSection(props) {
 
   )
 
-
   ////////////////////////////////////////
 
   //// liste contenant le texte affiché (1 seul objet)
@@ -94,8 +69,6 @@ function MidSection(props) {
 
   ////////////////////////////////////////
    /// fonction gérant l'affichage des textes acceuils et non professionel
-
-
 
    const changeTexteNonPro = () => {
     let objetAAjouter =  listeText[1];
@@ -126,11 +99,6 @@ function MidSection(props) {
 
     setCurrentQuestionPre([objetAAjouter]);
   };
-
-
-
-
-
 
   //////////////////////////////////
 
@@ -287,15 +255,76 @@ const selectConsultation = (event, idCons, idMaj) => {
   let idMajMin = idMaj;
   let idAno = event.target.id;
   console.log(idConsultation,"+",idMajMin,"+",idAno)
-
   if (idConsultation=="1"&&idMajMin=="1"&&idAno=="1") {
-    console.log("PREMIERE CONSULTATION");
-    
+    let objetAAjouter =  listeQuestionPre[11];
+    let elementAAjouter = listeElConsultation[0].elementsCon;
+    setCurrentElCons(elementAAjouter);
+    setCurrentQuestionPre([objetAAjouter]);    
   }
+  else if (idConsultation=="1"&&idMajMin=="2"&&idAno=="1"||idConsultation=="1"&&idMajMin=="2"&&idAno=="2") {
+    let objetAAjouter =  listeQuestionPre[11];
+    let elementAAjouter = listeElConsultation[1].elementsCon;
+    setCurrentElCons(elementAAjouter);
+    setCurrentQuestionPre([objetAAjouter]);
+  }
+  else if (idConsultation=="1"&&idMajMin=="1"&&idAno=="2"||idConsultation=="2"&&idMajMin=="1"&&idAno=="2"||idConsultation=="3"&&idMajMin=="1"&&idAno=="2"||idConsultation=="4"&&idMajMin=="1"&&idAno=="2"||idConsultation=="5"&&idMajMin=="1"&&idAno=="2") {
+    let objetAAjouter =  listeQuestionPre[12];
+    setCurrentQuestionPre([objetAAjouter]);
+  }
+  else if (idConsultation=="2"&&idMajMin=="1"&&idAno=="1") {
+    let objetAAjouter =  listeQuestionPre[11];
+    let elementAAjouter = listeElConsultation[2];
+    setCurrentElCons(elementAAjouter);
+    setCurrentQuestionPre([objetAAjouter]);
+  }
+  else if (idConsultation=="2"&&idMajMin=="2"&&idAno=="1"||idConsultation=="2"&&idMajMin=="2"&&idAno=="2") {
+    let objetAAjouter =  listeQuestionPre[11];
+    let elementAAjouter = listeElConsultation[3];
+    setCurrentElCons(elementAAjouter);
+    setCurrentQuestionPre([objetAAjouter]);
+  }
+  else if (idConsultation=="3"&&idMajMin=="1"&&idAno=="1") {
+    let objetAAjouter =  listeQuestionPre[11];
+    let elementAAjouter = listeElConsultation[4];
+    setCurrentElCons(elementAAjouter);
+    setCurrentQuestionPre([objetAAjouter]);
+  }
+  else if (idConsultation=="3"&&idMajMin=="2"&&idAno=="1"||idConsultation=="3"&&idMajMin=="2"&&idAno=="2") {
+    let objetAAjouter =  listeQuestionPre[11];
+    let elementAAjouter = listeElConsultation[5];
+    setCurrentElCons(elementAAjouter);
+    setCurrentQuestionPre([objetAAjouter]);
+  }
+  else if (idConsultation=="4"&&idMajMin=="1"&&idAno=="1") {
+    let objetAAjouter =  listeQuestionPre[11];
+    let elementAAjouter = listeElConsultation[6];
+    setCurrentElCons(elementAAjouter);
+    setCurrentQuestionPre([objetAAjouter]);
+  }
+  else if (idConsultation=="4"&&idMajMin=="2"&&idAno=="1"||idConsultation=="4"&&idMajMin=="2"&&idAno=="2") {
+    let objetAAjouter =  listeQuestionPre[11];
+    let elementAAjouter = listeElConsultation[7];
+    setCurrentElCons(elementAAjouter);
+    setCurrentQuestionPre([objetAAjouter]);
+  }
+  else if (idConsultation=="5"&&idMajMin=="1"&&idAno=="1") {
+    let objetAAjouter =  listeQuestionPre[11];
+    let elementAAjouter = listeElConsultation[8];
+    setCurrentElCons(elementAAjouter);
+    setCurrentQuestionPre([objetAAjouter]);
+  }
+  else if (idConsultation=="5"&&idMajMin=="2"&&idAno=="1"||idConsultation=="5"&&idMajMin=="2"&&idAno=="2") {
+    let objetAAjouter =  listeQuestionPre[11];
+    let elementAAjouter = listeElConsultation[9];
+    setCurrentElCons(elementAAjouter);
+    setCurrentQuestionPre([objetAAjouter]);
+  }
+  
 }
 ////////////////////
 
   //// liste contenant les question pré consultation (ou reponses si pas de consultations)
+///  la liste contient aussi les élements consulations
 
 
   const [ listeQuestionPre, setListeQuestionPre] = useState(
@@ -412,20 +441,107 @@ const selectConsultation = (event, idCons, idMaj) => {
         id : 10,
         objet : NoConsultationNoAttInfo,
         toggle : toggle
+      },
+      {
+        name : "Template Consultation",
+        id : 11,
+        objet : ConsultationModel
+      },
+      {
+        name : "Prémiere consultation majeure anonyme",
+        id : 12,
+        objet : PremiereConsultationMajAno
       }
 
     ]
   )
 
 
-
-
-
-
   /////////////////
 
+  //// liste contenant les élements affichés dans la consultations et state actif
 
+  const [ currentElCons, setCurrentElCons] = useState();
 
+  const [ listeElConsultation, setListeElConsulation] =useState(
+    [
+      {
+        id : 0,
+        elementsCon : {
+          name : "Première consultation majeure",
+          un : "1111",
+          deux : "2222",
+          premiere : "premiere"
+        }
+      },
+      {
+        id : 1,
+        elementsCon : {
+          name : "Première consultation mineure",
+          trois : "3333",
+          quatre : "4444",
+          deuxieme : "deuxieme"
+        }
+      },
+      {
+        id : 2,
+        elementsCon : {
+          name : "Deuxième consultation majeure"
+          
+        }
+      },
+      {
+        id : 3,
+        elementsCon : {
+          name : "Deuxième consultation mineure"
+          
+        }
+      },
+      {
+        id : 4,
+        elementsCon : {
+          name : "Première prise médicamenteuse majeure"
+          
+        }
+      },
+      {
+        id : 5,
+        elementsCon : {
+          name : "Première prise médicamenteuse mineure"
+          
+        }
+      },
+      {
+        id : 6,
+        elementsCon : {
+          name : "Deuxième prise médicamenteuse majeure"
+          
+        }
+      },
+      {
+        id : 7,
+        elementsCon : {
+          name : "Deuxième prise médicamenteuse mineure"
+          
+        }
+      },
+      {
+        id : 8,
+        elementsCon : {
+          name : "Troisième temps/ consultation de suivie majeure"
+          
+        }
+      },
+      {
+        id : 9,
+        elementsCon : {
+          name : "Troisième temps/ consultation de suivie mineure"
+          
+        }
+      }
+    ]
+  )
+  /////////////
 
   ////// state contenant la question (active) affichée à l'écran
 
@@ -435,17 +551,6 @@ const selectConsultation = (event, idCons, idMaj) => {
   )
 
   ////////////////////////
-
-
-
- 
-
-
-
-
-
-
-
 
   return (
     <div className="Mid">
@@ -466,7 +571,8 @@ const selectConsultation = (event, idCons, idMaj) => {
                   key={objet.id}
                   onFonction={objet.fonction}
                   onIdCons={consultationSelect}
-                  onIdMaj={majMinSelect}>
+                  onIdMaj={majMinSelect}
+                  onElCons={currentElCons}>
 
                   </objet.objet>
                 )
