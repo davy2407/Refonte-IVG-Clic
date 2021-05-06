@@ -17,6 +17,10 @@ import QuestionAttestationFormation from "@components/Questions/QuestionModal/Qu
 import NoConsultationNoAttInfo from "@components/Reponses/NoConsultationNoAttInfo";
 import ConsultationModel from "@components/Consultations/ConsultationModel";
 import PremiereConsultationMajAno from "@components/Consultations/PremiereConsultationMajAno";
+import BlocCovid from "@components/Consultations/ElementsConsultations/BlocCovid";
+import BlocDDR from "@components/Consultations/ElementsConsultations/BlocDDR";
+import BlocEcho from "@components/Consultations/ElementsConsultations/BlocEcho";
+import BlocAcc from "@components/Consultations/ElementsConsultations/BlocAcc";
 
 
 
@@ -469,9 +473,25 @@ const selectConsultation = (event, idCons, idMaj) => {
         id : 0,
         elementsCon : {
           name : "Première consultation majeure",
-          un : "1111",
-          deux : "2222",
-          premiere : "premiere"
+          titre : "Première consultation préalable/Premier contact médical Majeure",
+          listeElementsConsulations : [
+            {
+              objet : BlocCovid,
+              id : 0
+            },
+            {
+              objet : BlocDDR,
+              id : 1
+            },
+            {
+              objet : BlocEcho,
+              id : 2
+            },
+            {
+              objet : BlocAcc,
+              id : 3
+            }
+          ]
         }
       },
       {
