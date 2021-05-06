@@ -5,21 +5,21 @@ import "./TextAcceuil.css";
 
 function TextAcceuil(props) {
 
-  const [animation, setAnimation] = useState(0);
-  const toggle = props.toggle;
-  useEffect(() => {
-    renderNotification()
-}, [toggle]);
+//   const [animation, setAnimation] = useState(0);
+//   const toggle = props.toggle;
+//   useEffect(() => {
+//     renderNotification()
+// }, [toggle]);
 
-const renderNotification = () => {
-    return toggle ? setAnimation(1) : null
-};
+// const renderNotification = () => {
+//     return toggle ? setAnimation(1) : null
+// };
 
     return (
         
             <div 
-            animation={animation}
-            onAnimationEnd={() => {setAnimation(0);}}
+            // animation={animation}
+            // onAnimationEnd={() => {setAnimation(0);}}
             className="TextStart">
         <p>
         Site créé à destination de tout professionnel de santé prenant en charge l’interruption volontaire de grossesse médicamenteuse hors établissement de santé.

@@ -65,9 +65,7 @@ function BlocAcc(props) {
 
 
 
-            <Button variant="info" className="BouttonSuivant" onClick={()=>{
-              props.suite(props.keys);
-            }}>Suivant</Button>
+           
             </div>
     
   );

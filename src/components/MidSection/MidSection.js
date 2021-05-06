@@ -21,6 +21,8 @@ import BlocCovid from "@components/Consultations/ElementsConsultations/BlocCovid
 import BlocDDR from "@components/Consultations/ElementsConsultations/BlocDDR";
 import BlocEcho from "@components/Consultations/ElementsConsultations/BlocEcho";
 import BlocAcc from "@components/Consultations/ElementsConsultations/BlocAcc";
+import BlocDecouverte from "@components/Consultations/ElementsConsultations/BlocDecouverte";
+
 
 
 
@@ -36,6 +38,7 @@ function MidSection(props) {
 
 
  const handleClick = () => {
+   console.log("toggggle")
   setToggle(!toggle)
 }
 
@@ -449,7 +452,12 @@ const selectConsultation = (event, idCons, idMaj) => {
       {
         name : "Template Consultation",
         id : 11,
-        objet : ConsultationModel
+        objet : ConsultationModel,
+        toggle : toggle,
+        fonction : { 
+          animation : handleClick
+        }
+
       },
       {
         name : "Prémiere consultation majeure anonyme",
@@ -490,6 +498,10 @@ const selectConsultation = (event, idCons, idMaj) => {
             {
               objet : BlocAcc,
               id : 3
+            },
+            {
+              objet : BlocDecouverte,
+              id : 4
             }
           ]
         }

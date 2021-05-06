@@ -1,5 +1,6 @@
 import React , {useState,useEffect} from "react";
 
+import { Button } from "react-bootstrap";
 
 
 
@@ -8,9 +9,12 @@ import "./ConsultationModel.css";
 
 function ConsultationModel(props) {
 
+  
+
+
+
  
   const [listeElCon,setListeElCon] = useState(props.onElCons.listeElementsConsulations)
-  console.log(listeElCon);
   const [currentBloc, setCurrentBloc] = useState([listeElCon[0]])
   
  
@@ -24,10 +28,13 @@ function ConsultationModel(props) {
   }
 
 
+
  
 
   return (
-      <div className="Consultation">
+      <div  
+            
+            className="Consultation">
         <h1>{props.onElCons.titre}</h1>
 
         <br></br>
@@ -41,6 +48,12 @@ function ConsultationModel(props) {
             ></objet.objet>
           );
         })}
+
+<Button variant="info" className="BouttonSuivant" onClick={()=>{
+                props.onFonction.animation();
+                afficheSuite(currentBloc[0].id);
+             
+            }}>Suivant</Button>
         </div>
           
          

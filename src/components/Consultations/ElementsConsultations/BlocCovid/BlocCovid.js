@@ -18,6 +18,7 @@ function BlocCovid(props) {
         let objetAAjouter = txtCovid;
         setCurrentTxt(objetAAjouter);
     }
+
  
 
 
@@ -30,9 +31,11 @@ function BlocCovid(props) {
             <br></br>
             <div>{currentTxt}</div>
             <br></br>
-            <Button variant="info" className="BouttonSuivant" onClick={()=>{
+            {/* <Button variant="info" className="BouttonSuivant" onClick={()=>{
+               props.animation();
               props.suite(props.keys);
-            }}>Suivant</Button>
+             
+            }}>Suivant</Button> */}
             </div>
     
   );

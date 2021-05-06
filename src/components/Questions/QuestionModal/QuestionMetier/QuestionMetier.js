@@ -28,7 +28,6 @@ function QuestionMetier(props) {
           <h1>Vous êtes professionnel de santé</h1>
             <p>
               <Button variant="danger" onClick={()=>{
-                props.onFonction.animation();
                 props.onFonction.convention();
               }} value="Médecin gynécologue/Chirurgien obstéstrique">Médecin gynécologue/Chirurgien obstéstrique</Button>
             </p>
