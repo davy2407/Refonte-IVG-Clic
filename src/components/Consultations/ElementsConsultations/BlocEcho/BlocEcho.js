@@ -1,6 +1,5 @@
 import React , {useState,useEffect} from "react";
 
-import { Button } from "react-bootstrap";
 import {Form} from "react-bootstrap";
 import LightOn from "@assets/images/lightOn.svg";
 import LightOff from "@assets/images/lightOff.svg";
@@ -112,27 +111,11 @@ function BlocEcho(props) {
       />
       <div className="ContainerBulle">{currentInfoEcho}</div>
       <br></br>
-  
-
-
-
-
-
-
-
-
-
             
             </div>
     
   );
 
-
-
-
-
-
-  
  
 }
 

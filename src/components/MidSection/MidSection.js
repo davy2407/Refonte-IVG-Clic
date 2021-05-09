@@ -22,6 +22,14 @@ import BlocDDR from "@components/Consultations/ElementsConsultations/BlocDDR";
 import BlocEcho from "@components/Consultations/ElementsConsultations/BlocEcho";
 import BlocAcc from "@components/Consultations/ElementsConsultations/BlocAcc";
 import BlocDecouverte from "@components/Consultations/ElementsConsultations/BlocDecouverte";
+import BlocContext from "@components/Consultations/ElementsConsultations/BlocContext";
+import BlocViolence from "@components/Consultations/ElementsConsultations/BlocViolence";
+import BlocIST from "@components/Consultations/ElementsConsultations/BlocIST";
+import BlocPriseSang from "@components/Consultations/ElementsConsultations/BlocPriseSang";
+import BlocGuideIVG from "@components/Consultations/ElementsConsultations/BlocGuideIVG";
+import BlocConsultationPsy from "@components/Consultations/ElementsConsultations/BlocConsultationPsy";
+
+
 
 
 
@@ -502,6 +510,31 @@ const selectConsultation = (event, idCons, idMaj) => {
             {
               objet : BlocDecouverte,
               id : 4
+            },
+            {
+              objet : BlocContext,
+              id : 5
+            },
+            {
+              objet : BlocViolence,
+              id : 6
+            },
+            {
+              objet : BlocIST,
+              id : 7
+
+            },
+            {
+              objet : BlocPriseSang,
+              id : 8
+            },
+            {
+              objet : BlocGuideIVG,
+              id : 9
+            },
+            {
+              objet : BlocConsultationPsy,
+              id : 10
             }
           ]
         }
