@@ -1,3 +1,3 @@
 import BlocInfoContra from "./BlocInfoContra";
 
-export default BlocInfoContra;
+export default BlocInfoContra; 

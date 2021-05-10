@@ -85,12 +85,16 @@ function BlocDDR(props) {
     reponse : 1
 
   };
+  props.ajoute(reponse);
+
   let reponse2 = {
     titre : "+ jour : ",
     value : semaineSA.days.toString(),
     reponse : 1
 
   };
+  props.ajoute(reponse2);
+
   setValueDDRday(reponse2);
   setValueDDRweek(reponse);
   

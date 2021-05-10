@@ -24,6 +24,8 @@ function BlocContext(props) {
           reponse : 1
         };
         setCurrentContext(reponse);
+        props.ajoute(reponse);
+
       };
 
 

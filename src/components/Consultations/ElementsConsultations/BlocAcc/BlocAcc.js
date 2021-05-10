@@ -26,6 +26,8 @@ function BlocAcc(props) {
           reponse : 1
         };
         setCurrentAcc(reponse);
+        props.ajoute(reponse);
+
         
       }
     

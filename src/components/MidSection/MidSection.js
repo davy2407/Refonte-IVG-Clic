@@ -28,6 +28,12 @@ import BlocIST from "@components/Consultations/ElementsConsultations/BlocIST";
 import BlocPriseSang from "@components/Consultations/ElementsConsultations/BlocPriseSang";
 import BlocGuideIVG from "@components/Consultations/ElementsConsultations/BlocGuideIVG";
 import BlocConsultationPsy from "@components/Consultations/ElementsConsultations/BlocConsultationPsy";
+import BlocInfoContra from "@components/Consultations/ElementsConsultations/BlocInfoContra";
+import BlocHPV from "@components/Consultations/ElementsConsultations/BlocHPV";
+import BlocTabac from "@components/Consultations/ElementsConsultations/BlocTabac";
+import TarificationModel from "@components/Tarification/TarificationModel";
+
+
 
 
 
@@ -46,10 +52,19 @@ function MidSection(props) {
 
 
  const handleClick = () => {
-   console.log("toggggle")
   setToggle(!toggle)
 }
 
+
+const [listeReponse, setListeReponse] = useState([]);
+
+
+const ajouteReponse = (objet) =>{
+  let objetAAjouter = objet;
+  let newListe = listeReponse;
+  newListe.push(objetAAjouter);
+  setListeReponse(newListe);
+}
 
  ///// liste d'objet contenant les texte de démarrages à afficher
 
@@ -261,7 +276,11 @@ const [ AnoSelect, setAnoSelect] = useState();
 
 /////////////////////////////
 
+const afficheTarif = () => {
+  let objetAAjouter =  listeQuestionPre[13];
+  setCurrentQuestionPre([objetAAjouter]);    
 
+}
 
 /////////// fonction recup id est selectionne consulation à afficher 
 
@@ -269,7 +288,6 @@ const selectConsultation = (event, idCons, idMaj) => {
   let idConsultation = idCons;
   let idMajMin = idMaj;
   let idAno = event.target.id;
-  console.log(idConsultation,"+",idMajMin,"+",idAno)
   if (idConsultation=="1"&&idMajMin=="1"&&idAno=="1") {
     let objetAAjouter =  listeQuestionPre[11];
     let elementAAjouter = listeElConsultation[0].elementsCon;
@@ -463,7 +481,9 @@ const selectConsultation = (event, idCons, idMaj) => {
         objet : ConsultationModel,
         toggle : toggle,
         fonction : { 
-          animation : handleClick
+          animation : handleClick,
+          afficheTarification : afficheTarif,
+          ajout : ajouteReponse
         }
 
       },
@@ -471,6 +491,17 @@ const selectConsultation = (event, idCons, idMaj) => {
         name : "Prémiere consultation majeure anonyme",
         id : 12,
         objet : PremiereConsultationMajAno
+      },
+      {
+        name : "Template Tarification",
+        id : 13,
+        objet : TarificationModel,
+        toggle : toggle,
+        fonction : { 
+          animation : handleClick,
+
+        },
+        listeElementTarif : listeReponse
       }
 
     ]
@@ -482,7 +513,6 @@ const selectConsultation = (event, idCons, idMaj) => {
   //// liste contenant les élements affichés dans la consultations et state actif
 
   const [ currentElCons, setCurrentElCons] = useState();
-
   const [ listeElConsultation, setListeElConsulation] =useState(
     [
       {
@@ -535,6 +565,19 @@ const selectConsultation = (event, idCons, idMaj) => {
             {
               objet : BlocConsultationPsy,
               id : 10
+            },
+            {
+              objet : BlocInfoContra,
+              id : 11
+            },
+            {
+              objet : BlocHPV,
+              id : 12
+
+            },
+            {
+              objet : BlocTabac,
+              id : 13
             }
           ]
         }
@@ -543,9 +586,21 @@ const selectConsultation = (event, idCons, idMaj) => {
         id : 1,
         elementsCon : {
           name : "Première consultation mineure",
-          trois : "3333",
-          quatre : "4444",
-          deuxieme : "deuxieme"
+          listeElementsConsulations : [
+            {
+              objet : BlocCovid,
+              id : 0
+            },
+            {
+              objet : BlocDDR,
+              id : 1
+            },
+            {
+              objet : BlocEcho,
+              id : 2
+            }
+          ]
+         
         }
       },
       {
@@ -637,7 +692,8 @@ const selectConsultation = (event, idCons, idMaj) => {
                   onFonction={objet.fonction}
                   onIdCons={consultationSelect}
                   onIdMaj={majMinSelect}
-                  onElCons={currentElCons}>
+                  onElCons={currentElCons}
+                  onElTarif={objet.listeElementTarif}>
 
                   </objet.objet>
                 )

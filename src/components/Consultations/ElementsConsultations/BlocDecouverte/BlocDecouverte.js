@@ -24,6 +24,8 @@ function BlocDecouverte(props) {
           reponse : 1
         };
         setCurrentMode(reponse);
+        props.ajoute(reponse);
+
       }
 
    

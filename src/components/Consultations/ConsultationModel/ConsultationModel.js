@@ -21,9 +21,17 @@ function ConsultationModel(props) {
 
 
   const afficheSuite = (iden) => {
+    let limite = listeElCon.length - 1;
+    console.log(limite);
     let id = iden;
-    let newId = id + 1;
+    if (id>=limite) {
+      props.onFonction.afficheTarification();
+    } else {
+      let newId = id + 1;
     setCurrentBloc([listeElCon[newId]]);
+
+    }
+    
     
   }
 
@@ -38,23 +46,25 @@ function ConsultationModel(props) {
         <h1>{props.onElCons.titre}</h1>
 
         <br></br>
-        <div>
+        <div className="ContainerInter">
         {currentBloc.map((objet) => {
           return (
             <objet.objet 
             keys = {objet.id}
             suite = {afficheSuite}
+            ajoute = {props.onFonction.ajout}
               
             ></objet.objet>
           );
         })}
 
-<Button variant="info" className="BouttonSuivant" onClick={()=>{
+        </div>
+        <Button variant="info" className="BouttonSuivant" onClick={()=>{
                 props.onFonction.animation();
                 afficheSuite(currentBloc[0].id);
              
             }}>Suivant</Button>
-        </div>
+
           
          
 

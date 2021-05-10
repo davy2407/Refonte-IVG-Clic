@@ -26,6 +26,8 @@ function BlocConsultationPsy(props) {
           reponse : 1
         };
         setCurrentConsultation(reponse);
+        props.ajoute(reponse);
+
       }
 
 

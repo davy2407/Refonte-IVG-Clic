@@ -37,6 +37,8 @@ function BlocGuideIVG(props) {
           reponse : 1
         };
         setCurrentDossier(reponse);
+        props.ajoute(reponse);
+
       }
         
     

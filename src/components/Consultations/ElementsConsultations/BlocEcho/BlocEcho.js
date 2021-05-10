@@ -27,6 +27,7 @@ function BlocEcho(props) {
         };
         
         setCurrentEcho(reponse);
+        props.ajoute(reponse);
         
       }
 

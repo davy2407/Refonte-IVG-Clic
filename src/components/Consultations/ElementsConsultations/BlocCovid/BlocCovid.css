@@ -1,16 +1,2 @@
-.BlocConsultationStyle{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    border: solid 5px #72959e ;
-    background-color: #e3edf0 ;
-    border-radius: 20px;
-    padding: 5px;
-    
-}
 
-.BouttonSuivant{
-    align-self: flex-end;
-}
+

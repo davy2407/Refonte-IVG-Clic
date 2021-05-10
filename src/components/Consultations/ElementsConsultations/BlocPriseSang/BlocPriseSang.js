@@ -28,6 +28,8 @@ function BlocPriseSang(props) {
           reponse : 1
         };
         setCurrentSang(reponse);
+        props.ajoute(reponse);
+
       }
     
 

@@ -34,6 +34,8 @@ function BlocIST(props) {
           reponse : 1
         };
         setCurrentIST(reponse);
+        props.ajoute(reponse);
+
       }
 
       const recupInfoSupp = (e) => {
