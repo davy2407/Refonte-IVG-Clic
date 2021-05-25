@@ -36,6 +36,11 @@ function BlocCovid(props) {
               props.suite(props.keys);
              
             }}>Suivant</Button> */}
+                  <Button variant="info" className="BouttonSuivant" onClick={()=>{
+                props.suite(props.keys);
+             
+            }}>Suivant</Button>
+
             </div>
     
   );

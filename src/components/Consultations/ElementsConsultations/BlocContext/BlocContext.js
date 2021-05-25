@@ -1,6 +1,6 @@
 import React , {useState,useEffect} from "react";
 
-import {Form} from "react-bootstrap";
+import {Form,Button} from "react-bootstrap";
 
 
 
@@ -10,8 +10,8 @@ import "./BlocContext.css";
 
 function BlocContext(props) {
 
-    const [currentContext, setCurrentContext] = useState({
-        titre : "Contexte biopsychosocial favorable",
+  const [ currentRep, setCurrentRep] =useState({
+    titre : "Contexte biopsychosocial favorable",
         value : "",
         reponse : 0
       });
@@ -23,8 +23,7 @@ function BlocContext(props) {
           value: e.target.value,
           reponse : 1
         };
-        setCurrentContext(reponse);
-        props.ajoute(reponse);
+        setCurrentRep(reponse);
 
       };
 
@@ -85,6 +84,14 @@ function BlocContext(props) {
       </div>
       </Form>
     <div>{currentWarningContexte}</div>
+
+    <Button variant="info" className="BouttonSuivant" onClick={()=>{
+        props.ajoute(currentRep);
+        props.suite(props.keys);
+             
+            }}>Suivant</Button>
+
+
 
 
 

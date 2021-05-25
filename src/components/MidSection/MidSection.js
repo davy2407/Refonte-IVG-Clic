@@ -32,6 +32,8 @@ import BlocInfoContra from "@components/Consultations/ElementsConsultations/Bloc
 import BlocHPV from "@components/Consultations/ElementsConsultations/BlocHPV";
 import BlocTabac from "@components/Consultations/ElementsConsultations/BlocTabac";
 import TarificationModel from "@components/Tarification/TarificationModel";
+import PremiereTarifMAJ from "@components/Tarification/PremiereTarifMAJ";
+
 
 
 
@@ -47,7 +49,6 @@ function MidSection(props) {
  }, [])
 
 
-
  const [toggle, setToggle] = useState(false)
 
 
@@ -56,15 +57,6 @@ function MidSection(props) {
 }
 
 
-const [listeReponse, setListeReponse] = useState([]);
-
-
-const ajouteReponse = (objet) =>{
-  let objetAAjouter = objet;
-  let newListe = listeReponse;
-  newListe.push(objetAAjouter);
-  setListeReponse(newListe);
-}
 
  ///// liste d'objet contenant les texte de démarrages à afficher
 
@@ -282,6 +274,16 @@ const afficheTarif = () => {
 
 }
 
+
+////////////////////////////////:
+
+const afficheTarifPremiereMAj = () =>{
+  let objetAAjouter = PremiereTarifMAJ;
+  setCurrentQuestionPre([objetAAjouter]);    
+
+
+}
+
 /////////// fonction recup id est selectionne consulation à afficher 
 
 const selectConsultation = (event, idCons, idMaj) => {
@@ -289,6 +291,7 @@ const selectConsultation = (event, idCons, idMaj) => {
   let idMajMin = idMaj;
   let idAno = event.target.id;
   if (idConsultation=="1"&&idMajMin=="1"&&idAno=="1") {
+    /// si patiente majeure non anonyme
     let objetAAjouter =  listeQuestionPre[11];
     let elementAAjouter = listeElConsultation[0].elementsCon;
     setCurrentElCons(elementAAjouter);
@@ -356,8 +359,29 @@ const selectConsultation = (event, idCons, idMaj) => {
 }
 ////////////////////
 
+
+
+
+
+////////////// state et fonction contenant/recuperant les reponses saisies durant la consulation
+const [ elementTArif, setElementTarif] = useState([]);
+
+const recupElTarif = (liste) =>{
+  let objetAAjouter = liste;
+  console.log(objetAAjouter);
+  setElementTarif(objetAAjouter);
+}
+
+
+/////////////////////////////////////
+
+
   //// liste contenant les question pré consultation (ou reponses si pas de consultations)
 ///  la liste contient aussi les élements consulations
+
+
+
+
 
 
   const [ listeQuestionPre, setListeQuestionPre] = useState(
@@ -483,7 +507,7 @@ const selectConsultation = (event, idCons, idMaj) => {
         fonction : { 
           animation : handleClick,
           afficheTarification : afficheTarif,
-          ajout : ajouteReponse
+          recup : recupElTarif
         }
 
       },
@@ -498,10 +522,10 @@ const selectConsultation = (event, idCons, idMaj) => {
         objet : TarificationModel,
         toggle : toggle,
         fonction : { 
-          animation : handleClick,
+          animation : handleClick
 
-        },
-        listeElementTarif : listeReponse
+        }
+        
       }
 
     ]
@@ -509,6 +533,8 @@ const selectConsultation = (event, idCons, idMaj) => {
 
 
   /////////////////
+
+  
 
   //// liste contenant les élements affichés dans la consultations et state actif
 
@@ -520,6 +546,7 @@ const selectConsultation = (event, idCons, idMaj) => {
         elementsCon : {
           name : "Première consultation majeure",
           titre : "Première consultation préalable/Premier contact médical Majeure",
+          fonction : afficheTarifPremiereMAj,
           listeElementsConsulations : [
             {
               objet : BlocCovid,
@@ -580,6 +607,7 @@ const selectConsultation = (event, idCons, idMaj) => {
               id : 13
             }
           ]
+         
         }
       },
       {
@@ -672,6 +700,10 @@ const selectConsultation = (event, idCons, idMaj) => {
 
   ////////////////////////
 
+
+
+ console.log(PremiereTarifMAJ);
+
   return (
     <div className="Mid">
     
@@ -693,11 +725,14 @@ const selectConsultation = (event, idCons, idMaj) => {
                   onIdCons={consultationSelect}
                   onIdMaj={majMinSelect}
                   onElCons={currentElCons}
-                  onElTarif={objet.listeElementTarif}>
+                  onElTarif={elementTArif}
+                  >
 
                   </objet.objet>
                 )
               })}
+
+
               
               
 

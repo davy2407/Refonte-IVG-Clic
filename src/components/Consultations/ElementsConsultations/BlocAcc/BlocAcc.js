@@ -1,7 +1,7 @@
 import React , {useState,useEffect} from "react";
 
-import { Button } from "react-bootstrap";
-import {Form} from "react-bootstrap";
+import {Form,Button} from "react-bootstrap";
+
 
 
 
@@ -11,7 +11,7 @@ import "./BlocAcc.css";
 
 function BlocAcc(props) {
 
-    const [ currentAcc, setCurrentAcc] =useState({
+    const [ currentRep, setCurrentRep] =useState({
         titre : "Personne accompagnante ",
         value : "",
         reponse : 0
@@ -25,8 +25,7 @@ function BlocAcc(props) {
           value: e.target.value,
           reponse : 1
         };
-        setCurrentAcc(reponse);
-        props.ajoute(reponse);
+        setCurrentRep(reponse);
 
         
       }
@@ -65,6 +64,13 @@ function BlocAcc(props) {
         
       </label>
 
+
+
+      <Button variant="info" className="BouttonSuivant" onClick={()=>{
+        props.ajoute(currentRep);
+        props.suite(props.keys);
+             
+            }}>Suivant</Button>
 
 
            

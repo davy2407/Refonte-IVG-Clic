@@ -1,6 +1,6 @@
 import React , {useState,useEffect} from "react";
 
-import {Form} from "react-bootstrap";
+import {Form,Button} from "react-bootstrap";
 import LightOn from "@assets/images/lightOn.svg";
 import LightOff from "@assets/images/lightOff.svg";
 
@@ -107,6 +107,11 @@ function BlocViolence(props) {
         src={logoAfficheViolence}
       />
       <div className="ContainerBulle">  {currentInfoViolence}</div>
+      <Button variant="info" className="BouttonSuivant" onClick={()=>{
+                props.suite(props.keys);
+             
+            }}>Suivant</Button>
+
       </div>
     
   );

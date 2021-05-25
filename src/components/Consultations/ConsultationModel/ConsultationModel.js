@@ -14,18 +14,32 @@ function ConsultationModel(props) {
 
 
  
+  
+
+  
+
+ 
   const [listeElCon,setListeElCon] = useState(props.onElCons.listeElementsConsulations)
-  const [currentBloc, setCurrentBloc] = useState([listeElCon[0]])
+  const [currentBloc, setCurrentBloc] = useState([listeElCon[0]]);
+
+  const [listeReponseConsultation, setListeReponseConsultation] = useState([]);
   
  
-
+  const ajouteReponseCons = (reponse) => {
+    let objetAAjouter = reponse;
+    let listeRep = [...listeReponseConsultation];
+    listeRep.push(objetAAjouter);
+    console.log(listeRep);
+    setListeReponseConsultation(listeRep);
+    props.onFonction.recup(listeRep);
+  }
 
   const afficheSuite = (iden) => {
     let limite = listeElCon.length - 1;
-    console.log(limite);
     let id = iden;
     if (id>=limite) {
-      props.onFonction.afficheTarification();
+      props.onElCons.fonction()
+      // props.onFonction.afficheTarification();
     } else {
       let newId = id + 1;
     setCurrentBloc([listeElCon[newId]]);
@@ -52,18 +66,13 @@ function ConsultationModel(props) {
             <objet.objet 
             keys = {objet.id}
             suite = {afficheSuite}
-            ajoute = {props.onFonction.ajout}
+            ajoute = {ajouteReponseCons}
               
             ></objet.objet>
           );
         })}
 
         </div>
-        <Button variant="info" className="BouttonSuivant" onClick={()=>{
-                props.onFonction.animation();
-                afficheSuite(currentBloc[0].id);
-             
-            }}>Suivant</Button>
 
           
          

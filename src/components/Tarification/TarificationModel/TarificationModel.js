@@ -8,7 +8,10 @@ import "./TarificationModel.css";
 
 function TarificationModel(props) {
 
+
+
   
+
 
 
 
@@ -29,7 +32,9 @@ function TarificationModel(props) {
           );
         })}
 
-        
+
+        {/* <ElementAffiche onData={props.onElTarif}></ElementAffiche> */}
+
 
           
          

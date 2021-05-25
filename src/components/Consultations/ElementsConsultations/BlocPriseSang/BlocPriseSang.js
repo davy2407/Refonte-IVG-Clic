@@ -1,6 +1,6 @@
 import React , {useState,useEffect} from "react";
 
-import {Form} from "react-bootstrap";
+import {Form,Button} from "react-bootstrap";
 import LightOn from "@assets/images/lightOn.svg";
 import LightOff from "@assets/images/lightOff.svg";
 
@@ -12,8 +12,8 @@ import "./BlocPriseSang.css";
 
 function BlocPriseSang(props) {
 
-    const [currentSang, setCurrentSang] = useState({
-        titre : "Prise de sang ",
+  const [ currentRep, setCurrentRep] =useState({
+    titre : "Prise de sang ",
         value : "",
         reponse : 0
       });
@@ -27,8 +27,7 @@ function BlocPriseSang(props) {
           value: e.target.value,
           reponse : 1
         };
-        setCurrentSang(reponse);
-        props.ajoute(reponse);
+        setCurrentRep(reponse);
 
       }
     
@@ -112,6 +111,13 @@ function BlocPriseSang(props) {
       <div className="ContainerBulle">{currentInfoSang}</div>
 
       <br></br>
+      <Button variant="info" className="BouttonSuivant" onClick={()=>{
+        props.ajoute(currentRep);
+        props.suite(props.keys);
+             
+            }}>Suivant</Button>
+
+
 
             </div>
     

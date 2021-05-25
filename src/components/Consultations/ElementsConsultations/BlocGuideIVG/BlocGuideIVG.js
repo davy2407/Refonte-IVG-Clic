@@ -1,6 +1,6 @@
 import React , {useState,useEffect} from "react";
 
-import {Form} from "react-bootstrap";
+import {Form,Button} from "react-bootstrap";
 import GuideIVG from "@assets/pdf/GuideIvgPatiente.pdf";
 import newPdfIcon from "@assets/images/PDFicon.svg";
 
@@ -14,8 +14,8 @@ import "./BlocGuideIVG.css";
 
 function BlocGuideIVG(props) {
 
-    const [currentDossier, setCurrentDossier] = useState({
-        titre : "Dossier guide IVG remis ",
+  const [ currentRep, setCurrentRep] =useState({
+    titre : "Dossier guide IVG remis ",
         value : "",
         reponse : 0
       });
@@ -36,8 +36,7 @@ function BlocGuideIVG(props) {
           value : e.target.value,
           reponse : 1
         };
-        setCurrentDossier(reponse);
-        props.ajoute(reponse);
+        setCurrentRep(reponse);
 
       }
         
@@ -90,6 +89,14 @@ function BlocGuideIVG(props) {
           </p>
 
       </div>
+
+      <Button variant="info" className="BouttonSuivant" onClick={()=>{
+        props.ajoute(currentRep);
+        props.suite(props.keys);
+             
+            }}>Suivant</Button>
+
+
 
       </div>
 

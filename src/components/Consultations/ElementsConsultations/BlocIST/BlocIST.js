@@ -12,8 +12,8 @@ import "./BlocIST.css";
 
 function BlocIST(props) {
 
-    const [currentIST, setCurrentIST] = useState({
-        titre : "Recherche IST +/- antibio-prophylaxie ",
+  const [ currentRep, setCurrentRep] =useState({
+    titre : "Recherche IST +/- antibio-prophylaxie ",
         value : "",
         reponse : 0
       });
@@ -33,8 +33,7 @@ function BlocIST(props) {
           value : e.target.value,
           reponse : 1
         };
-        setCurrentIST(reponse);
-        props.ajoute(reponse);
+        setCurrentRep(reponse);
 
       }
 
@@ -47,6 +46,7 @@ function BlocIST(props) {
         };
         
         setInfoSupp(reponse);
+        props.ajoute(reponse);
       };
     
 
@@ -156,6 +156,14 @@ function BlocIST(props) {
       />
       <div className="ContainerBulle">  {currentInfoIST}</div>
       <br></br>
+
+      <Button variant="info" className="BouttonSuivant" onClick={()=>{
+        props.ajoute(currentRep);
+        props.suite(props.keys);
+             
+            }}>Suivant</Button>
+
+
      
             </div>
     

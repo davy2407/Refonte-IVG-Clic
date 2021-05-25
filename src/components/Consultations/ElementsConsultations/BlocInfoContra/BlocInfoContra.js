@@ -1,6 +1,6 @@
 import React , {useState,useEffect} from "react";
 
-import {Form} from "react-bootstrap";
+import {Form,Button} from "react-bootstrap";
 import LightOn from "@assets/images/lightOn.svg";
 import LightOff from "@assets/images/lightOff.svg";
 
@@ -12,8 +12,8 @@ import "./BlocInfoContra.css";
 
 function BlocInfoContra(props) {
 
-    const [ currentInfo, setCurrentInfo]= useState({
-        titre : "Information contraception",
+  const [ currentRep, setCurrentRep] =useState({
+    titre : "Information contraception",
         value : "",
         reponse : 0
       });
@@ -25,8 +25,7 @@ function BlocInfoContra(props) {
           value : e.target.value,
           reponse : 1
         };
-        setCurrentInfo(reponse);
-        props.ajoute(reponse);
+        setCurrentRep(reponse);
 
       }
 
@@ -108,7 +107,15 @@ function BlocInfoContra(props) {
       />
       <br></br>
       <div className="ContainerBulle">{currentInfoPostIVG}</div>
-      <br></br>            
+      <br></br> 
+
+      <Button variant="info" className="BouttonSuivant" onClick={()=>{
+        props.ajoute(currentRep);
+        props.suite(props.keys);
+             
+            }}>Suivant</Button>
+
+           
       </div>
     
   );

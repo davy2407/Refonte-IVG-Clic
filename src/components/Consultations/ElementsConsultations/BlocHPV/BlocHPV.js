@@ -1,6 +1,6 @@
 import React , {useState,useEffect} from "react";
 
-import {Form} from "react-bootstrap";
+import {Form,Button} from "react-bootstrap";
 import LightOn from "@assets/images/lightOn.svg";
 import LightOff from "@assets/images/lightOff.svg";
 
@@ -11,8 +11,8 @@ import "./BlocHPV.css";
 
 
 function BlocHPV(props) {
-    const [ currentHPV, setCurrentHPV] = useState({
-        titre : "Frottis à jour ou test HPV",
+  const [ currentRep, setCurrentRep] =useState({
+    titre : "Frottis à jour ou test HPV",
         value : "",
         reponse : 0
       });
@@ -29,8 +29,7 @@ function BlocHPV(props) {
           value : e.target.value,
           reponse : 1
         };
-        setCurrentHPV(reponse);
-        props.ajoute(reponse);
+        setCurrentRep(reponse);
         if (e.target.value == "Oui") {
           setCurrentDateHPV(
             {
@@ -136,7 +135,6 @@ function BlocHPV(props) {
           reponse : 1
         };
        setCurrentDateHPV(reponse);
-       props.ajoute(reponse);
 
     
       };
@@ -203,7 +201,15 @@ function BlocHPV(props) {
       />
       <br></br>
       <div className="ContainerBulle">{currentInfoFrotti}</div>
-      <br></br>           
+      <br></br>   
+      <Button variant="info" className="BouttonSuivant" onClick={()=>{
+        props.ajoute(currentRep);
+        props.ajoute(currentDateHPV);
+        props.suite(props.keys);
+             
+            }}>Suivant</Button>
+
+        
       </div>
     
   );

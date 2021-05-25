@@ -1,6 +1,6 @@
 import React , {useState,useEffect} from "react";
 
-import {Form} from "react-bootstrap";
+import {Form,Button} from "react-bootstrap";
 
 
 
@@ -10,8 +10,8 @@ import "./BlocDecouverte.css";
 
 function BlocDecouverte(props) {
 
-    const [currentMode, setCurrentMode] = useState({
-        titre : "Mode de découverte de la grossesse ",
+  const [ currentRep, setCurrentRep] =useState({
+    titre : "Mode de découverte de la grossesse ",
         value : "",
         reponse : 0
       });
@@ -23,8 +23,7 @@ function BlocDecouverte(props) {
           value : e.target.value,
           reponse : 1
         };
-        setCurrentMode(reponse);
-        props.ajoute(reponse);
+        setCurrentRep(reponse);
 
       }
 
@@ -70,6 +69,13 @@ function BlocDecouverte(props) {
       />
       </div>
       </Form>
+
+      <Button variant="info" className="BouttonSuivant" onClick={()=>{
+        props.ajoute(currentRep);
+        props.suite(props.keys);
+             
+            }}>Suivant</Button>
+
 
        
            

@@ -11,21 +11,19 @@ function BlocDDR(props) {
     
   const [dateDDR, setDateDDR] = useState({});
 
-  const [valueDDRday, setValueDDRday] = useState(
-    {
-      titre : "+ jour : ",
-      value : "",
-  
-    }
-  );
-
   const [valueDDRweek, setValueDDRweek] = useState(
     {
       titre : "Nombre semaines SA : ",
       value : "",
+      titreBis : "+ jour : ",
+      valueBis : "",
+      reponse : 0
+      
   
     }
   );
+
+  
 
   const Urgence = ()=> {
     return (
@@ -82,20 +80,15 @@ function BlocDDR(props) {
   let reponse = {
     titre : "Nombre semaines SA : ",
     value : semaineSA.weeks.toString(),
+    titreBis : " + jour : ",
+    valueBis : semaineSA.days.toString(),
     reponse : 1
 
   };
-  props.ajoute(reponse);
 
-  let reponse2 = {
-    titre : "+ jour : ",
-    value : semaineSA.days.toString(),
-    reponse : 1
+ 
 
-  };
-  props.ajoute(reponse2);
-
-  setValueDDRday(reponse2);
+ 
   setValueDDRweek(reponse);
   
   
@@ -175,7 +168,7 @@ function BlocDDR(props) {
       </form>
 
       <p><span className="Bold">SA : </span>{valueDDRweek.value}</p>
-        <p><span className="Bold">Jour : </span>{valueDDRday.value}</p>
+        <p><span className="Bold">Jour : </span>{valueDDRweek.valueBis}</p>
       
       
       <br></br>
@@ -199,6 +192,14 @@ function BlocDDR(props) {
 
            
             <br></br>
+
+            <Button variant="info" className="BouttonSuivant" onClick={()=>{
+        props.ajoute(valueDDRweek);
+        props.suite(props.keys);
+             
+            }}>Suivant</Button>
+
+
            
             </div>
     

@@ -1,6 +1,6 @@
 import React , {useState,useEffect} from "react";
 
-import {Form} from "react-bootstrap";
+import {Form,Button} from "react-bootstrap";
 import LightOn from "@assets/images/lightOn.svg";
 import LightOff from "@assets/images/lightOff.svg";
 
@@ -12,8 +12,8 @@ import "./BlocConsultationPsy.css";
 
 function BlocConsultationPsy(props) {
 
-    const [ currentConsultation, setCurrentConsultation] = useState({
-        titre : "Consultation psycho-sociale  obligatoirement proposée ",
+  const [ currentRep, setCurrentRep] =useState({
+    titre : "Consultation psycho-sociale  obligatoirement proposée ",
         value : "",
         reponse : 0
       });
@@ -25,8 +25,7 @@ function BlocConsultationPsy(props) {
           value : e.target.value,
           reponse : 1
         };
-        setCurrentConsultation(reponse);
-        props.ajoute(reponse);
+        setCurrentRep(reponse);
 
       }
 
@@ -114,6 +113,13 @@ function BlocConsultationPsy(props) {
       <br></br>
       <div className="ContainerBulle">{currentInfoPsycho}</div>
       <br></br>
+      <Button variant="info" className="BouttonSuivant" onClick={()=>{
+        props.ajoute(currentRep);
+        props.suite(props.keys);
+             
+            }}>Suivant</Button>
+
+
             </div>
     
   );

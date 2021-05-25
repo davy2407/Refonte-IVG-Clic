@@ -12,8 +12,8 @@ import "./BlocTabac.css";
 
 function BlocTabac(props) {
 
-    const [currentTabac, setCurrentTabac]= useState({
-        titre : "Tabac ",
+  const [ currentRep, setCurrentRep] =useState({
+    titre : "Tabac ",
         value : "",
         reponse : 0
       });
@@ -31,8 +31,7 @@ function BlocTabac(props) {
           value: e.target.value,
           reponse : 1
         };
-        setCurrentTabac(reponse);
-        props.ajoute(reponse);
+        setCurrentRep(reponse);
         if (e.target.value == "Oui") {
           setCurrentNbTabac(
             {
@@ -69,7 +68,6 @@ function BlocTabac(props) {
         reponse : 1
       };
      setCurrentNbTabac(reponse);
-     props.ajoute(reponse);
 
       
     };
@@ -207,7 +205,16 @@ function BlocTabac(props) {
         src={logoAfficheTabac}
       />
       <br></br>
-      <div className="ContainerBulle">{currentInfoTabac}</div>      </div>
+      <div className="ContainerBulle">{currentInfoTabac}</div>   
+      <Button variant="info" className="BouttonSuivant" onClick={()=>{
+        props.ajoute(currentRep);
+        props.ajoute(currentNbTabac);
+        props.suite(props.keys);
+             
+            }}>Suivant</Button>
+
+
+   </div>
     
   );
 

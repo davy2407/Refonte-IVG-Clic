@@ -1,6 +1,6 @@
 import React , {useState,useEffect} from "react";
 
-import {Form} from "react-bootstrap";
+import {Form,Button} from "react-bootstrap";
 import LightOn from "@assets/images/lightOn.svg";
 import LightOff from "@assets/images/lightOff.svg";
 
@@ -12,8 +12,8 @@ import "./BlocEcho.css";
 
 function BlocEcho(props) {
 
-    const [currentEcho, setCurrentEcho] = useState({
-        titre : "Prescription échographie de datation ",
+  const [ currentRep, setCurrentRep] =useState({
+    titre : "Prescription échographie de datation ",
         value : "",
         reponse : 0
       });
@@ -26,8 +26,7 @@ function BlocEcho(props) {
           reponse : 1
         };
         
-        setCurrentEcho(reponse);
-        props.ajoute(reponse);
+        setCurrentRep(reponse);
         
       }
 
@@ -112,6 +111,14 @@ function BlocEcho(props) {
       />
       <div className="ContainerBulle">{currentInfoEcho}</div>
       <br></br>
+
+      <Button variant="info" className="BouttonSuivant" onClick={()=>{
+        props.ajoute(currentRep);
+        props.suite(props.keys);
+             
+            }}>Suivant</Button>
+
+
             
             </div>
     
