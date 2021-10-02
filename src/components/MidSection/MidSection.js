@@ -37,6 +37,16 @@ import PremiereTarifMin from "@components/Tarification/PremiereTarifMin";
 import BlocAccMin from "@components/Consultations/ElementConsultationMineure/BlocAccMin";
 import BlocConsultPsyMin from "@components/Consultations/ElementConsultationMineure/BlocConsultPsyMin";
 import BlocDeuxiemeCovid from "@components/Consultations/ElementsConsultations/BlocDeuxiemeCovid";
+import BlocRealConsult from "@components/Consultations/ElementsConsultations/BlocRealConsult";
+import BlocAttPremier from "@components/Consultations/ElementsConsultations/BlocAttPremier";
+import BlocAgeGesta from "@components/Consultations/ElementsConsultations/BlocAgeGesta";
+import BlocGrossesseCon from "@components/Consultations/ElementsConsultations/BlocGrossesseCon";
+import BlocPriseSangEff from "@components/Consultations/ElementsConsultations/BlocPriseSangEff";
+import BlocDosage from "@components/Consultations/ElementsConsultations/BlocDosage";
+import BlocGroupeSang from "@components/Consultations/ElementsConsultations/BlocGroupeSang";
+
+
+
 
 
 
@@ -705,29 +715,57 @@ const recupElTarif = (liste) =>{
               id : 0
             },
             {
-              objet : BlocAcc,
+              objet : BlocAttPremier,
               id : 1
             },
             {
-              objet : BlocViolence,
+              objet : BlocAcc,
               id : 2
             },
             {
-              objet : BlocIST,
+              objet : BlocRealConsult,
               id : 3
             },
             {
-              objet : BlocInfoContra,
+              objet : BlocViolence,
               id : 4
             },
             {
-              objet : BlocHPV,
+              objet : BlocGrossesseCon,
               id : 5
+            },
+            {
+              objet : BlocAgeGesta,
+              id : 6
+            },
+            {
+              objet : BlocIST,
+              id : 7
+            },
+            {
+              objet : BlocPriseSangEff,
+              id : 8
+            },
+            {
+              objet : BlocDosage,
+              id : 9
+            },
+            {
+              objet : BlocGroupeSang,
+              id : 10
+            },
+            {
+              objet : BlocInfoContra,
+              id : 11
+            },
+            {
+              objet : BlocHPV,
+              id : 12
 
             },
             {
               objet : BlocTabac,
-              id : 6
+              id : 13
             }
 
           ]
@@ -739,7 +777,60 @@ const recupElTarif = (liste) =>{
       {
         id : 3,
         elementsCon : {
-          name : "Deuxième consultation mineure"
+          name : "Deuxième consultation mineure",
+          titre : "Deuxième consultation préalable à l’IVG/Recueil de consentement Mineure",
+          fonctionTarif : affichePremiereTarifMin,
+          listeElementsConsulations : [
+            {
+              objet : BlocDeuxiemeCovid,
+              id : 0
+            },
+            {
+              objet : BlocAttPremier,
+              id : 1
+            },
+            {
+              objet : BlocViolence,
+              id : 2
+            },
+            {
+              objet : BlocGrossesseCon,
+              id : 3
+            },
+            {
+              objet : BlocAgeGesta,
+              id : 4
+            },
+            {
+              objet : BlocIST,
+              id : 5
+            },
+            {
+              objet : BlocPriseSangEff,
+              id : 6
+            },
+            {
+              objet : BlocDosage,
+              id : 7
+            },
+            {
+              objet : BlocGroupeSang,
+              id : 8
+            },
+            {
+              objet : BlocInfoContra,
+              id : 9
+            },
+            {
+              objet : BlocTabac,
+              id : 10
+            }
+
+
+          ]
+
+
+
           
         }
       },
