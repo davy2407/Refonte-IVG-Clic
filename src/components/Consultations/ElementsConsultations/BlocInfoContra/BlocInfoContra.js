@@ -11,6 +11,18 @@ import "./BlocInfoContra.css";
 
 
 function BlocInfoContra(props) {
+  useEffect(() => {
+    window.scrollTo(0,300);
+ }, [])
+  const [classBouttonBase,setClassBouttonBase] = useState("BouttonSuivant");
+
+  const [classBouttonActif, setClassBouttonActif] = useState("BouttonSuivantActif");
+
+  const [currentClassBtt, setCurrentClassBtt] = useState(classBouttonBase);
+
+  const changeBtnClass = () => {
+    setCurrentClassBtt(classBouttonActif);
+  }
 
   const [ currentRep, setCurrentRep] =useState({
     titre : "Information contraception",
@@ -78,7 +90,7 @@ function BlocInfoContra(props) {
 <h2>Information contraception post-IVG</h2>
       <br></br>
       <Form>
-      <div key={`contra-radio`} className="mb-3" onChange={(e)=>{recupRadioContra(e);}}>
+      <div key={`contra-radio`} className="mb-3" onChange={(e)=>{recupRadioContra(e);changeBtnClass();}}>
       <Form.Check 
         type='radio'
         id={`contraOui`}
@@ -108,8 +120,12 @@ function BlocInfoContra(props) {
       <br></br>
       <div className="ContainerBulle">{currentInfoPostIVG}</div>
       <br></br> 
+      <Button variant="info" className="BouttonRetour" onClick={()=>{
+        props.retour(props.keys);
+             
+            }}>Retour</Button>
 
-      <Button variant="info" className="BouttonSuivant" onClick={()=>{
+      <Button variant="info" className={currentClassBtt}  onClick={()=>{
         props.ajoute(currentRep);
         props.suite(props.keys);
              

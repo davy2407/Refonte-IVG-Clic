@@ -1,15 +1,16 @@
 import React , {useState,useEffect} from "react";
+import ConsentementMineur from "@assets/pdf/consentementMineure.pdf";
 
 import {Form,Button} from "react-bootstrap";
 
 
 
 
-import "./BlocDecouverte.css";
+
+import "./BlocAccMin.css";
 
 
-function BlocDecouverte(props) {
-
+function BlocAcc(props) {
   useEffect(() => {
     window.scrollTo(0,300);
  }, [])
@@ -21,80 +22,77 @@ function BlocDecouverte(props) {
 
   const changeBtnClass = () => {
     setCurrentClassBtt(classBouttonActif);
-  }
+  };
 
-  const [ currentRep, setCurrentRep] =useState({
-    titre : "Mode de découverte de la grossesse ",
+    const [ currentRep, setCurrentRep] =useState({
+        titre : "Personne accompagnante ",
         value : "",
         reponse : 0
       });
     
 
-    const recupRadioMode = (e) => {
+
+    const recupRadioAcc = (e) => {
         let reponse = {
-          titre : "Mode de découverte de la grossesse :",
-          value : e.target.value,
+          titre: "Accompagnant(e) : ",
+          value: e.target.value,
           reponse : 1
         };
         setCurrentRep(reponse);
 
+        
       }
-
-   
+    
 
 
 
 
   return (
     <div className="BlocConsultationStyle">
-      <h2>Mode de découverte de la grossesse </h2>
-      <br></br>
+        <h2>
+        Personne accompagnante majeure ou consentement parental obliagtoire
+        </h2>
+
+
+        <label>
       <Form>
-      <div key={`uri-radio`} className="mb-3" onChange={(e)=>{recupRadioMode(e);changeBtnClass();}}>
+      <div key={`acc-radio`} className="mb-3" onChange={(e)=>{recupRadioAcc(e);changeBtnClass();}}>
       <Form.Check 
         type='radio'
-        id={`uriTest`}
-        label={`Test Urinaire`}
-        value="Test Urinaire"
-        name="mode"
+        id={`accOui`}
+        label={`Oui`}
+        value="Oui"
+        name="accompagant"
       />
 
 <Form.Check 
         type='radio'
-        id={`sangTest`}
-        label={`Test Sanguin`}
-        value="Test Sanguin"
-        name="mode"
-      />
-      <Form.Check 
-        type='radio'
-        id={`echoRe`}
-        label={`Échographie`}
-        value="Échographie"
-        name="mode"
-      />
-      <Form.Check 
-        type='radio'
-        id={`CliRe`}
-        label={`Clinique`}
-        value="Clinique"
-        name="mode"
+        id={`accNon`}
+        label={`Non`}
+        value="Non"
+        name="accompagant"
       />
       </div>
       </Form>
+      <p>
+        <a className="Bold" href={ConsentementMineur} target="_blank ">Formulaire de consentement pour patiente mineure.</a>
+
+        </p>
+        
+      </label>
       <Button variant="info" className="BouttonRetour" onClick={()=>{
         props.retour(props.keys);
              
             }}>Retour</Button>
 
-      <Button variant="info" className={currentClassBtt}  onClick={()=>{
+
+      <Button variant="info" className={currentClassBtt} onClick={()=>{
         props.ajoute(currentRep);
         props.suite(props.keys);
              
             }}>Suivant</Button>
 
 
-       
            
             </div>
     
@@ -109,4 +107,4 @@ function BlocDecouverte(props) {
  
 }
 
-export default BlocDecouverte;
+export default BlocAcc;

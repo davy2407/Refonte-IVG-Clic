@@ -11,6 +11,18 @@ import "./BlocEcho.css";
 
 
 function BlocEcho(props) {
+  useEffect(() => {
+    window.scrollTo(0,300);
+ }, [])
+  const [classBouttonBase,setClassBouttonBase] = useState("BouttonSuivant");
+
+  const [classBouttonActif, setClassBouttonActif] = useState("BouttonSuivantActif");
+
+  const [currentClassBtt, setCurrentClassBtt] = useState(classBouttonBase);
+
+  const changeBtnClass = () => {
+    setCurrentClassBtt(classBouttonActif);
+  }
 
   const [ currentRep, setCurrentRep] =useState({
     titre : "Prescription échographie de datation ",
@@ -79,7 +91,7 @@ function BlocEcho(props) {
             
 
         <Form>
-      <div key={`echo-radio`} className="mb-3" onChange={(e)=>{recupRadioEcho(e);}}>
+      <div key={`echo-radio`} className="mb-3" onChange={(e)=>{recupRadioEcho(e);changeBtnClass();}}>
       <Form.Check 
         type='radio'
         id={`echoOui`}
@@ -111,8 +123,12 @@ function BlocEcho(props) {
       />
       <div className="ContainerBulle">{currentInfoEcho}</div>
       <br></br>
+      <Button variant="info" className="BouttonRetour" onClick={()=>{
+        props.retour(props.keys);
+             
+            }}>Retour</Button>
 
-      <Button variant="info" className="BouttonSuivant" onClick={()=>{
+      <Button variant="info" className={currentClassBtt}  onClick={()=>{
         props.ajoute(currentRep);
         props.suite(props.keys);
              

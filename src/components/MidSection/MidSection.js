@@ -32,7 +32,11 @@ import BlocInfoContra from "@components/Consultations/ElementsConsultations/Bloc
 import BlocHPV from "@components/Consultations/ElementsConsultations/BlocHPV";
 import BlocTabac from "@components/Consultations/ElementsConsultations/BlocTabac";
 import TarificationModel from "@components/Tarification/TarificationModel";
-import PremiereTarifMAJ from "@components/Tarification/PremiereTarifMAJ";
+import PremiereTarifMaj from "@components/Tarification/PremiereTarifMaj";
+import PremiereTarifMin from "@components/Tarification/PremiereTarifMin";
+import BlocAccMin from "@components/Consultations/ElementConsultationMineure/BlocAccMin";
+import BlocConsultPsyMin from "@components/Consultations/ElementConsultationMineure/BlocConsultPsyMin";
+import BlocDeuxiemeCovid from "@components/Consultations/ElementsConsultations/BlocDeuxiemeCovid";
 
 
 
@@ -274,15 +278,20 @@ const afficheTarif = () => {
 
 }
 
+const affichePremiereTarif = () => {
+  let objetAAjouter = listeQuestionPre[14];
+  setCurrentQuestionPre([objetAAjouter]);
+}
+
+const affichePremiereTarifMin = () => {
+  let objetAAjouter = listeQuestionPre[15];
+  setCurrentQuestionPre([objetAAjouter]);
+}
+
 
 ////////////////////////////////:
 
-const afficheTarifPremiereMAj = () =>{
-  let objetAAjouter = PremiereTarifMAJ;
-  setCurrentQuestionPre([objetAAjouter]);    
 
-
-}
 
 /////////// fonction recup id est selectionne consulation à afficher 
 
@@ -309,49 +318,49 @@ const selectConsultation = (event, idCons, idMaj) => {
   }
   else if (idConsultation=="2"&&idMajMin=="1"&&idAno=="1") {
     let objetAAjouter =  listeQuestionPre[11];
-    let elementAAjouter = listeElConsultation[2];
+    let elementAAjouter = listeElConsultation[2].elementsCon;
     setCurrentElCons(elementAAjouter);
     setCurrentQuestionPre([objetAAjouter]);
   }
   else if (idConsultation=="2"&&idMajMin=="2"&&idAno=="1"||idConsultation=="2"&&idMajMin=="2"&&idAno=="2") {
     let objetAAjouter =  listeQuestionPre[11];
-    let elementAAjouter = listeElConsultation[3];
+    let elementAAjouter = listeElConsultation[3].elementsCon;
     setCurrentElCons(elementAAjouter);
     setCurrentQuestionPre([objetAAjouter]);
   }
   else if (idConsultation=="3"&&idMajMin=="1"&&idAno=="1") {
     let objetAAjouter =  listeQuestionPre[11];
-    let elementAAjouter = listeElConsultation[4];
+    let elementAAjouter = listeElConsultation[4].elementsCon;
     setCurrentElCons(elementAAjouter);
     setCurrentQuestionPre([objetAAjouter]);
   }
   else if (idConsultation=="3"&&idMajMin=="2"&&idAno=="1"||idConsultation=="3"&&idMajMin=="2"&&idAno=="2") {
     let objetAAjouter =  listeQuestionPre[11];
-    let elementAAjouter = listeElConsultation[5];
+    let elementAAjouter = listeElConsultation[5].elementsCon;
     setCurrentElCons(elementAAjouter);
     setCurrentQuestionPre([objetAAjouter]);
   }
   else if (idConsultation=="4"&&idMajMin=="1"&&idAno=="1") {
     let objetAAjouter =  listeQuestionPre[11];
-    let elementAAjouter = listeElConsultation[6];
+    let elementAAjouter = listeElConsultation[6].elementsCon;
     setCurrentElCons(elementAAjouter);
     setCurrentQuestionPre([objetAAjouter]);
   }
   else if (idConsultation=="4"&&idMajMin=="2"&&idAno=="1"||idConsultation=="4"&&idMajMin=="2"&&idAno=="2") {
     let objetAAjouter =  listeQuestionPre[11];
-    let elementAAjouter = listeElConsultation[7];
+    let elementAAjouter = listeElConsultation[7].elementsCon;
     setCurrentElCons(elementAAjouter);
     setCurrentQuestionPre([objetAAjouter]);
   }
   else if (idConsultation=="5"&&idMajMin=="1"&&idAno=="1") {
     let objetAAjouter =  listeQuestionPre[11];
-    let elementAAjouter = listeElConsultation[8];
+    let elementAAjouter = listeElConsultation[8].elementsCon;
     setCurrentElCons(elementAAjouter);
     setCurrentQuestionPre([objetAAjouter]);
   }
   else if (idConsultation=="5"&&idMajMin=="2"&&idAno=="1"||idConsultation=="5"&&idMajMin=="2"&&idAno=="2") {
     let objetAAjouter =  listeQuestionPre[11];
-    let elementAAjouter = listeElConsultation[9];
+    let elementAAjouter = listeElConsultation[9].elementsCon;
     setCurrentElCons(elementAAjouter);
     setCurrentQuestionPre([objetAAjouter]);
   }
@@ -368,7 +377,6 @@ const [ elementTArif, setElementTarif] = useState([]);
 
 const recupElTarif = (liste) =>{
   let objetAAjouter = liste;
-  console.log(objetAAjouter);
   setElementTarif(objetAAjouter);
 }
 
@@ -526,6 +534,18 @@ const recupElTarif = (liste) =>{
 
         }
         
+      },
+      {
+        name : "Premiere Tarification Majeure",
+        id : 14,
+        objet : PremiereTarifMaj,
+        toggle : toggle
+      },
+      {
+        name : "Premiere Tarification Mineure",
+        id : 15,
+        objet : PremiereTarifMin,
+        toggle : toggle
       }
 
     ]
@@ -546,7 +566,7 @@ const recupElTarif = (liste) =>{
         elementsCon : {
           name : "Première consultation majeure",
           titre : "Première consultation préalable/Premier contact médical Majeure",
-          fonction : afficheTarifPremiereMAj,
+          fonctionTarif : affichePremiereTarif,
           listeElementsConsulations : [
             {
               objet : BlocCovid,
@@ -614,18 +634,60 @@ const recupElTarif = (liste) =>{
         id : 1,
         elementsCon : {
           name : "Première consultation mineure",
+          titre : "Première consultation préalable/Premier contact médical Mineure",
+          fonctionTarif : affichePremiereTarifMin,
           listeElementsConsulations : [
             {
               objet : BlocCovid,
               id : 0
             },
             {
-              objet : BlocDDR,
+              objet : BlocAccMin,
               id : 1
             },
             {
-              objet : BlocEcho,
+              objet : BlocDDR,
               id : 2
+            },
+            {
+              objet : BlocEcho,
+              id : 3
+            },
+            {
+              objet : BlocDecouverte,
+              id : 4
+            },
+            {
+              objet : BlocContext,
+              id : 5
+            },
+            {
+              objet : BlocIST,
+              id : 6
+            },
+            {
+              objet : BlocPriseSang,
+              id : 7
+            },
+            {
+              objet : BlocGuideIVG,
+              id : 8
+            },
+            {
+              objet : BlocConsultPsyMin,
+              id : 9
+            },
+            {
+              objet : BlocViolence,
+              id : 10
+            },
+            {
+              objet : BlocInfoContra,
+              id : 11
+            },
+            {
+              objet : BlocTabac,
+              id : 12
             }
           ]
          
@@ -634,7 +696,43 @@ const recupElTarif = (liste) =>{
       {
         id : 2,
         elementsCon : {
-          name : "Deuxième consultation majeure"
+          name : "Deuxième consultation majeure",
+          titre : "Deuxième consultation préalable à l’IVG/Recueil de consentement Majeure",
+          fonctionTarif : affichePremiereTarifMin,
+          listeElementsConsulations : [
+            {
+              objet : BlocDeuxiemeCovid,
+              id : 0
+            },
+            {
+              objet : BlocAcc,
+              id : 1
+            },
+            {
+              objet : BlocViolence,
+              id : 2
+            },
+            {
+              objet : BlocIST,
+              id : 3
+            },
+            {
+              objet : BlocInfoContra,
+              id : 4
+            },
+            {
+              objet : BlocHPV,
+              id : 5
+
+            },
+            {
+              objet : BlocTabac,
+              id : 6
+            }
+
+          ]
+
+
           
         }
       },
@@ -702,7 +800,6 @@ const recupElTarif = (liste) =>{
 
 
 
- console.log(PremiereTarifMAJ);
 
   return (
     <div className="Mid">

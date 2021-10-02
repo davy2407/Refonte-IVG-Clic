@@ -13,6 +13,18 @@ import "./BlocGuideIVG.css";
 
 
 function BlocGuideIVG(props) {
+  useEffect(() => {
+    window.scrollTo(0,300);
+ }, [])
+  const [classBouttonBase,setClassBouttonBase] = useState("BouttonSuivant");
+
+  const [classBouttonActif, setClassBouttonActif] = useState("BouttonSuivantActif");
+
+  const [currentClassBtt, setCurrentClassBtt] = useState(classBouttonBase);
+
+  const changeBtnClass = () => {
+    setCurrentClassBtt(classBouttonActif);
+  }
 
   const [ currentRep, setCurrentRep] =useState({
     titre : "Dossier guide IVG remis ",
@@ -46,7 +58,7 @@ function BlocGuideIVG(props) {
     <div className="BlocConsultationStyle">
              <h2>Dossier guide IVG remis :</h2>
       <Form>
-      <div key={`guide-radio`} className="mb-3" onChange={(e)=>{recupRadioGuide(e);}}>
+      <div key={`guide-radio`} className="mb-3" onChange={(e)=>{recupRadioGuide(e);changeBtnClass();}}>
       <Form.Check 
         type='radio'
         id={`guideOui`}
@@ -89,8 +101,12 @@ function BlocGuideIVG(props) {
           </p>
 
       </div>
+      <Button variant="info" className="BouttonRetour" onClick={()=>{
+        props.retour(props.keys);
+             
+            }}>Retour</Button>
 
-      <Button variant="info" className="BouttonSuivant" onClick={()=>{
+      <Button variant="info" className={currentClassBtt}  onClick={()=>{
         props.ajoute(currentRep);
         props.suite(props.keys);
              

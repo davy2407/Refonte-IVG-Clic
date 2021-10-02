@@ -11,6 +11,18 @@ import "./BlocIST.css";
 
 
 function BlocIST(props) {
+  useEffect(() => {
+    window.scrollTo(0,300);
+ }, [])
+  const [classBouttonBase,setClassBouttonBase] = useState("BouttonSuivant");
+
+  const [classBouttonActif, setClassBouttonActif] = useState("BouttonSuivantActif");
+
+  const [currentClassBtt, setCurrentClassBtt] = useState(classBouttonBase);
+
+  const changeBtnClass = () => {
+    setCurrentClassBtt(classBouttonActif);
+  }
 
   const [ currentRep, setCurrentRep] =useState({
     titre : "Recherche IST +/- antibio-prophylaxie ",
@@ -129,7 +141,7 @@ function BlocIST(props) {
         <h2>Recherche IST +/- antibio-prophylaxie</h2>
       <br></br>
       <Form>
-      <div key={`Ist-radio`} className="mb-3" onChange={(e)=>{recupRadioIST(e);}}>
+      <div key={`Ist-radio`} className="mb-3" onChange={(e)=>{recupRadioIST(e);changeBtnClass();}}>
       <Form.Check 
         type='radio'
         id={`ISToui`}
@@ -156,8 +168,12 @@ function BlocIST(props) {
       />
       <div className="ContainerBulle">  {currentInfoIST}</div>
       <br></br>
+      <Button variant="info" className="BouttonRetour" onClick={()=>{
+        props.retour(props.keys);
+             
+            }}>Retour</Button>
 
-      <Button variant="info" className="BouttonSuivant" onClick={()=>{
+      <Button variant="info" className={currentClassBtt}  onClick={()=>{
         props.ajoute(currentRep);
         props.suite(props.keys);
              

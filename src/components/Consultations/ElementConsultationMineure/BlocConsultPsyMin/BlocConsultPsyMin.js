@@ -7,10 +7,10 @@ import LightOff from "@assets/images/lightOff.svg";
 
 
 
-import "./BlocConsultationPsy.css";
+import "./BlocConsultPsyMin.css";
 
 
-function BlocConsultationPsy(props) {
+function BlocConsultPsyMin(props) {
   useEffect(() => {
     window.scrollTo(0,300);
  }, [])
@@ -48,16 +48,14 @@ function BlocConsultationPsy(props) {
         return (
           <div className="BulleInfo">
             <p>
-            Elle n’est pas obligatoire pour les personnes majeures. Mais obligation légale de la proposer.  Délai de 48h de réflexion avant de signer le consentement après la consultation psycho-sociale.
-    
+            Un entretien psycho-social, fait par une personne qualifiée en conseil conjugal, est obligatoire en cas de patiente mineure. Il a lieu entre les deux consultations préalables à l’IVG. Un délai de 48 heures est à respecter entre la consultation psycho-sociale et la deuxième consultation préalable à l’IVG. 
             </p>
             <br></br>
             <p>Elle peut avoir lieu : </p>
             <br></br>
             <ul>
               <li>
-                dans un établissement d’information, de consultation ou de conseil
-                familial 
+              dans un établissement d’information, de consultation ou de conseil familial 
               </li>
               <li>dans un centre de planification ou d’éducation familiale</li>
               <li>dans un service social ou un autre organisme agréé</li>
@@ -94,7 +92,7 @@ function BlocConsultationPsy(props) {
 
   return (
     <div className="BlocConsultationStyle">
-      <h2>Consultation psycho-sociale proposée</h2>
+      <h2>Consultation psycho-sociale obligatoire</h2>
       <br></br>
       <Form>
       <div key={`conPsy-radio`} className="mb-3" onChange={(e)=>{recupRadioPsycho(e);changeBtnClass();}}>
@@ -144,4 +142,4 @@ function BlocConsultationPsy(props) {
 
 }
 
-export default BlocConsultationPsy;
+export default BlocConsultPsyMin;

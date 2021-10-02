@@ -41,6 +41,7 @@
 }
 
 .ContainerInter{
+    min-height: 60vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -50,23 +51,33 @@
 }
 
 
-/* .BouttonSuivant{
+.BouttonSuivant{
+    display: none;
+    
+}
+
+.BouttonSuivantActif{
     align-self: flex-end;
-} */
+}
+
+.BouttonRetour{
+    align-self: flex-start;
+}
 
 
 .BlocConsultationStyle{
+    
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     text-align: center;
     border: solid 5px #72959e ;
     background-color: #e3edf0 ;
     border-radius: 20px;
-    padding: 5px;
+    padding: 5%;
     width: 60%;
-    min-height: 35vh;
+    min-height: 50vh;
     
 }
 

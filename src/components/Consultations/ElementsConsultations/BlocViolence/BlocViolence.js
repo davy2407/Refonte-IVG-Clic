@@ -12,6 +12,26 @@ import "./BlocViolence.css";
 
 
 function BlocViolence(props) {
+  useEffect(() => {
+    window.scrollTo(0,300);
+ }, [])
+  const [classBouttonBase,setClassBouttonBase] = useState("BouttonSuivant");
+
+  const [classBouttonActif, setClassBouttonActif] = useState("BouttonSuivantActif");
+
+  const [currentClassBtt, setCurrentClassBtt] = useState(classBouttonBase);
+
+  const changeBtnClass = () => {
+    setCurrentClassBtt(classBouttonActif);
+  };
+
+  const [ currentVio, setCurrentVio] =useState({
+    titre : " ",
+        value : "",
+        reponse : 1
+      });
+
+  
 
     const violence = () => {
         return (
@@ -72,7 +92,7 @@ function BlocViolence(props) {
 
 
         <Form>
-      <div key={`Vio-radio`} className="mb-3" >
+      <div key={`Vio-radio`} className="mb-3" onChange={(e)=>{changeBtnClass();}} >
       <Form.Check 
         type='radio'
         id={`VioOui`}
@@ -107,8 +127,14 @@ function BlocViolence(props) {
         src={logoAfficheViolence}
       />
       <div className="ContainerBulle">  {currentInfoViolence}</div>
-      <Button variant="info" className="BouttonSuivant" onClick={()=>{
+      <Button variant="info" className="BouttonRetour" onClick={()=>{
+        props.retour(props.keys);
+             
+            }}>Retour</Button>
+      <Button variant="info" className={currentClassBtt}  onClick={()=>{
+                props.ajoute(currentVio);
                 props.suite(props.keys);
+
              
             }}>Suivant</Button>
 

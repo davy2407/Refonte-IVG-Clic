@@ -38,8 +38,7 @@ function ConsultationModel(props) {
     let limite = listeElCon.length - 1;
     let id = iden;
     if (id>=limite) {
-      props.onElCons.fonction()
-      // props.onFonction.afficheTarification();
+      props.onElCons.fonctionTarif();
     } else {
       let newId = id + 1;
     setCurrentBloc([listeElCon[newId]]);
@@ -47,6 +46,23 @@ function ConsultationModel(props) {
     }
     
     
+  }
+
+
+  const retourArriere = (iden) => {
+    let listeRep = [...listeReponseConsultation];
+    let limite = 0;
+    let id = iden;
+    
+    if (id>limite) {
+      
+
+      let newId = id - 1;
+      listeRep.splice(newId);
+      setListeReponseConsultation(listeRep);
+      setCurrentBloc([listeElCon[newId]]);
+    }
+    console.log(listeRep);
   }
 
 
@@ -67,6 +83,7 @@ function ConsultationModel(props) {
             keys = {objet.id}
             suite = {afficheSuite}
             ajoute = {ajouteReponseCons}
+            retour = {retourArriere}
               
             ></objet.objet>
           );

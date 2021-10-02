@@ -8,6 +8,20 @@ import "./BlocDDR.css";
 
 
 function BlocDDR(props) {
+  useEffect(() => {
+    window.scrollTo(0,300);
+ }, [])
+
+
+  const [classBouttonBase,setClassBouttonBase] = useState("BouttonSuivant");
+
+  const [classBouttonActif, setClassBouttonActif] = useState("BouttonSuivantActif");
+
+  const [currentClassBtt, setCurrentClassBtt] = useState(classBouttonBase);
+
+  const changeBtnClass = () => {
+    setCurrentClassBtt(classBouttonActif);
+  };
     
   const [dateDDR, setDateDDR] = useState({});
 
@@ -113,6 +127,11 @@ function BlocDDR(props) {
       const clicDateIncertaine = () => {
         affichageTxtUrgence();
         affichageDateIncertaine();
+        setValueDDRweek({
+      titre : "Date DDR :  ",
+      value : "Incertaine",
+      reponse : 1
+        });
         
       }
     
@@ -160,7 +179,8 @@ function BlocDDR(props) {
         id="DDR"
         onChange={(e)=> {
           let myDate = new Date(e.target.valueAsDate);
-          DDR(myDate);}}
+          DDR(myDate);
+          changeBtnClass();}}
         
         
       ></input>
@@ -173,7 +193,8 @@ function BlocDDR(props) {
       
       <br></br>
       <label>
-        Date incertaine ?<Button variant="danger" onClick={(e)=>{clicDateIncertaine();;}}>Oui</Button>
+        Date incertaine ?<Button variant="danger" onClick={()=>{clicDateIncertaine();
+        changeBtnClass();}}>Oui</Button>
       </label>
       <div  className="ContainerBulle">{currentIncertaine}</div>
 
@@ -192,8 +213,12 @@ function BlocDDR(props) {
 
            
             <br></br>
+            <Button variant="info" className="BouttonRetour" onClick={()=>{
+        props.retour(props.keys);
+             
+            }}>Retour</Button>
 
-            <Button variant="info" className="BouttonSuivant" onClick={()=>{
+            <Button variant="info" className={currentClassBtt} onClick={()=>{
         props.ajoute(valueDDRweek);
         props.suite(props.keys);
              

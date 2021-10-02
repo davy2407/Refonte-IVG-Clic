@@ -1,3 +1,3 @@
-import PremiereTarifMAJ from "./PremiereTarifMAJ";
+import PremiereTarifMaj from "./PremiereTarifMaj";
 
-export default PremiereTarifMAJ;
+export default PremiereTarifMaj;

@@ -11,6 +11,18 @@ import "./BlocTabac.css";
 
 
 function BlocTabac(props) {
+  useEffect(() => {
+    window.scrollTo(0,300);
+ }, [])
+  const [classBouttonBase,setClassBouttonBase] = useState("BouttonSuivant");
+
+  const [classBouttonActif, setClassBouttonActif] = useState("BouttonSuivantActif");
+
+  const [currentClassBtt, setCurrentClassBtt] = useState(classBouttonBase);
+
+  const changeBtnClass = () => {
+    setCurrentClassBtt(classBouttonActif);
+  }
 
   const [ currentRep, setCurrentRep] =useState({
     titre : "Tabac ",
@@ -142,6 +154,22 @@ function BlocTabac(props) {
         setLogoAfficheTabac(currentCache);
         affichageTxtTabac();
       };
+
+
+
+      const cocanation = (elment, elementDate) => {
+        let reponse = elment;
+        let reponse2 = elementDate;
+        let newObjet = {
+          titre : reponse.titre,
+          value : reponse.value,
+          reponse : reponse.reponse,
+          titreBis : reponse2.titre,
+          valueBis : reponse2.value,
+          reponseBis : reponse2.reponse
+        }
+        props.ajoute(newObjet);
+      }
     
 
     
@@ -155,7 +183,7 @@ function BlocTabac(props) {
 <h2>Tabac :</h2>
       <br></br>
       <Form>
-      <div key={`tabac-radio`} className="mb-3" onChange={(e)=>{recupRadioTabac(e);}}>
+      <div key={`tabac-radio`} className="mb-3" onChange={(e)=>{recupRadioTabac(e);changeBtnClass();}}>
       <Form.Check 
         type='radio'
         id={`tabacOui`}
@@ -205,10 +233,16 @@ function BlocTabac(props) {
         src={logoAfficheTabac}
       />
       <br></br>
-      <div className="ContainerBulle">{currentInfoTabac}</div>   
-      <Button variant="info" className="BouttonSuivant" onClick={()=>{
-        props.ajoute(currentRep);
-        props.ajoute(currentNbTabac);
+      <div className="ContainerBulle">{currentInfoTabac}</div>  
+      <Button variant="info" className="BouttonRetour" onClick={()=>{
+        props.retour(props.keys);
+             
+            }}>Retour</Button> 
+      <Button variant="info" className={currentClassBtt}  onClick={()=>{
+        // props.ajoute(currentRep);
+        // props.ajoute(currentNbTabac);
+        cocanation(currentRep,currentNbTabac);
+
         props.suite(props.keys);
              
             }}>Suivant</Button>

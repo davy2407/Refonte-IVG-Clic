@@ -9,6 +9,19 @@ import "./BlocContext.css";
 
 
 function BlocContext(props) {
+  useEffect(() => {
+    window.scrollTo(0,300);
+ }, [])
+
+  const [classBouttonBase,setClassBouttonBase] = useState("BouttonSuivant");
+
+  const [classBouttonActif, setClassBouttonActif] = useState("BouttonSuivantActif");
+
+  const [currentClassBtt, setCurrentClassBtt] = useState(classBouttonBase);
+
+  const changeBtnClass = () => {
+    setCurrentClassBtt(classBouttonActif);
+  }
 
   const [ currentRep, setCurrentRep] =useState({
     titre : "Contexte biopsychosocial favorable",
@@ -64,7 +77,7 @@ function BlocContext(props) {
 
 
         <Form>
-      <div key={`psyCho-radio`} className="mb-3" onChange={(e)=>{recupRadioContexte(e);}}>
+      <div key={`psyCho-radio`} className="mb-3" onChange={(e)=>{recupRadioContexte(e);changeBtnClass();}}>
       <Form.Check 
         type='radio'
         id={`psyChoOui`}
@@ -84,8 +97,12 @@ function BlocContext(props) {
       </div>
       </Form>
     <div>{currentWarningContexte}</div>
+    <Button variant="info" className="BouttonRetour" onClick={()=>{
+        props.retour(props.keys);
+             
+            }}>Retour</Button>
 
-    <Button variant="info" className="BouttonSuivant" onClick={()=>{
+    <Button variant="info" className={currentClassBtt} onClick={()=>{
         props.ajoute(currentRep);
         props.suite(props.keys);
              

@@ -11,6 +11,19 @@ import "./BlocHPV.css";
 
 
 function BlocHPV(props) {
+   useEffect(() => {
+    window.scrollTo(0,300);
+ }, [])
+
+  const [classBouttonBase,setClassBouttonBase] = useState("BouttonSuivant");
+
+  const [classBouttonActif, setClassBouttonActif] = useState("BouttonSuivantActif");
+
+  const [currentClassBtt, setCurrentClassBtt] = useState(classBouttonBase);
+
+  const changeBtnClass = () => {
+    setCurrentClassBtt(classBouttonActif);
+  }
   const [ currentRep, setCurrentRep] =useState({
     titre : "Frottis à jour ou test HPV",
         value : "",
@@ -138,6 +151,24 @@ function BlocHPV(props) {
 
     
       };
+
+
+      const cocanation = (elment, elementDate) => {
+        let reponse = elment;
+        let reponse2 = elementDate;
+        let newObjet = {
+          titre : reponse.titre,
+          value : reponse.value,
+          reponse : reponse.reponse,
+          titreBis : reponse2.titre,
+          valueBis : reponse2.value,
+          reponseBis : reponse2.reponse
+        }
+        props.ajoute(newObjet);
+      }
+
+
+     
     
     
 
@@ -148,7 +179,7 @@ function BlocHPV(props) {
 <h2>Frottis à jour ou test HPV</h2>
       <br></br>
       <Form>
-      <div key={`hpv-radio`} className="mb-3" onChange={(e)=>{recupRadioHPV(e);}}>
+      <div key={`hpv-radio`} className="mb-3" onChange={(e)=>{recupRadioHPV(e);changeBtnClass();}}>
       <Form.Check 
         type='radio'
         id={`hpvOui`}
@@ -201,10 +232,15 @@ function BlocHPV(props) {
       />
       <br></br>
       <div className="ContainerBulle">{currentInfoFrotti}</div>
-      <br></br>   
-      <Button variant="info" className="BouttonSuivant" onClick={()=>{
-        props.ajoute(currentRep);
-        props.ajoute(currentDateHPV);
+      <br></br> 
+      <Button variant="info" className="BouttonRetour" onClick={()=>{
+        props.retour(props.keys);
+             
+            }}>Retour</Button>  
+      <Button variant="info" className={currentClassBtt}  onClick={()=>{
+        // props.ajoute(currentRep);
+        // props.ajoute(currentDateHPV);
+        cocanation(currentRep,currentDateHPV);
         props.suite(props.keys);
              
             }}>Suivant</Button>
