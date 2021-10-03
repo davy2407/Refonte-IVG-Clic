@@ -1,18 +1,17 @@
 import React , {useState,useEffect} from "react";
-
-import {Form,Button} from "react-bootstrap";
-import GuideIVG from "@assets/pdf/GuideIvgPatiente.pdf";
+import InfoPatiente from "@assets/pdf/InfoPatiente.pdf";
 import newPdfIcon from "@assets/images/PDFicon.svg";
 
+import {Form,Button} from "react-bootstrap";
 
 
 
 
 
-import "./BlocGuideIVG.css";
+import "./BlocDeliMiso.css";
 
 
-function BlocGuideIVG(props) {
+function BlocDeliMiso(props) {
   useEffect(() => {
     window.scrollTo(0,300);
  }, [])
@@ -22,111 +21,105 @@ function BlocGuideIVG(props) {
 
   const [currentClassBtt, setCurrentClassBtt] = useState(classBouttonBase);
 
+  const [ classIcon, setClassIcon] = useState("iconPDFNew");
+
+  const [ hoverIcon, setHoverIcon] = useState("iconPDFNewHover");
+  
+  const [ iconConsen, setIconConsen] = useState(classIcon);
+
   const changeBtnClass = () => {
     setCurrentClassBtt(classBouttonActif);
-  }
+  };
 
-  const [ currentRep, setCurrentRep] =useState({
-    titre : "Dossier guide IVG remis ",
+    const [ currentRep, setCurrentRep] =useState({
+        titre : "Personne accompagnante ",
         value : "",
         reponse : 0
       });
     
-    const [ classIcon, setClassIcon] = useState("iconPDFNew");
-
-    const [ hoverIcon, setHoverIcon] = useState("iconPDFNewHover");
-
-    const [ globalClassIcon, setGlobalCassIcon] = useState(classIcon);
 
 
-    
-
-
-      const recupRadioGuide = (e) => {
+    const recupRadioAcc = (e) => {
         let reponse = {
-          titre : "Contexte de l’IVG évoqués :",
-          value : e.target.value,
+          titre: "Accompagnant(e) : ",
+          value: e.target.value,
           reponse : 1
         };
         setCurrentRep(reponse);
 
-      }
         
+      }
     
+
+
+
 
   return (
     <div className="BlocConsultationStyle">
-             <h2>Dossier guide IVG remis :</h2>
+        <h2>
+        Délivrance du misoprostol
+        </h2>
+
+
+        <label>
       <Form>
-      <div key={`guide-radio`} className="mb-3" onChange={(e)=>{recupRadioGuide(e);changeBtnClass();}}>
+      <div key={`acc-radio`} className="mb-3" onChange={(e)=>{recupRadioAcc(e);changeBtnClass();}}>
       <Form.Check 
         type='radio'
-        id={`guideOui`}
+        id={`accOui`}
         label={`Oui`}
         value="Oui"
-        name="guideIVG"
+        name="accompagant"
       />
 
 <Form.Check 
         type='radio'
-        id={`guideNon`}
+        id={`accNon`}
         label={`Non`}
         value="Non"
-        name="guideIVG"
+        name="accompagant"
       />
       </div>
       </Form>
-
-
-      <br></br>
-      
-      <br></br>
-      <div className="docContainer">
-      <p> 
-      <a className="NewDocContainer" rel="noopener noreferrer"  href={GuideIVG} target="_blank">
+      <p>
+        <a className="NewDocContainer" rel="noreferrer noopener"  href={InfoPatiente} target="_blank">
       <input
+        alt="Image document consentement mineure"
+        className={iconConsen}
         onMouseEnter={()=>{
-          setGlobalCassIcon(hoverIcon);
+          setIconConsen(hoverIcon);
           
         }}
         onMouseOut={()=>{
-          setGlobalCassIcon(classIcon);
+          setIconConsen(classIcon);
         }}
-        className={globalClassIcon}
         type="image"
         src={newPdfIcon}
       />
-        PDF Guide IVG
+        Fiche information patiente
       </a>
-          </p>
-
-      </div>
+        </p>
+        
+      </label>
       <Button variant="info" className="BouttonRetour" onClick={()=>{
         props.retour(props.keys);
              
             }}>Retour</Button>
 
-      <Button variant="info" className={currentClassBtt}  onClick={()=>{
+
+      <Button variant="info" className={currentClassBtt} onClick={()=>{
         props.ajoute(currentRep);
         props.suite(props.keys);
              
             }}>Suivant</Button>
 
 
-
-      </div>
-
-
+           
+            </div>
     
   );
-
-
-
-
-
-
-  
+ 
  
 }
 
-export default BlocGuideIVG;
+export default BlocDeliMiso;

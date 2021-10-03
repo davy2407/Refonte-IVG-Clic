@@ -4,11 +4,13 @@ import './FicheUnePage.css';
 
 class FicheUnePage extends React.Component {
     constructor(props){
+     
         super(props);
         this.state = {
             data : this.props.data
         }
     }
+    
   render() {
     
     return (
@@ -23,7 +25,7 @@ class FicheUnePage extends React.Component {
       <br></br>
       <br></br>
       <h3>
-        Résumé de la consultation de 1er contact médical préalable à l’IVG :{" "}
+        Résumé de la consultation
       </h3>
       <br></br>
       <p className="pStart">Nom/prénom et date de naissance :</p>

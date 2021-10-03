@@ -1,5 +1,6 @@
 import React , {useState,useEffect} from "react";
 import ConsentementMineur from "@assets/pdf/consentementMineure.pdf";
+import newPdfIcon from "@assets/images/PDFicon.svg";
 
 import {Form,Button} from "react-bootstrap";
 
@@ -19,6 +20,12 @@ function BlocAcc(props) {
   const [classBouttonActif, setClassBouttonActif] = useState("BouttonSuivantActif");
 
   const [currentClassBtt, setCurrentClassBtt] = useState(classBouttonBase);
+
+  const [ classIcon, setClassIcon] = useState("iconPDFNew");
+
+  const [ hoverIcon, setHoverIcon] = useState("iconPDFNewHover");
+  
+  const [ iconConsen, setIconConsen] = useState(classIcon);
 
   const changeBtnClass = () => {
     setCurrentClassBtt(classBouttonActif);
@@ -75,8 +82,22 @@ function BlocAcc(props) {
       </div>
       </Form>
       <p>
-        <a className="Bold" href={ConsentementMineur} target="_blank ">Formulaire de consentement pour patiente mineure.</a>
-
+        <a className="NewDocContainer" rel="noreferrer noopener"  href={ConsentementMineur} target="_blank">
+      <input
+        alt="Image document consentement mineure"
+        className={iconConsen}
+        onMouseEnter={()=>{
+          setIconConsen(hoverIcon);
+          
+        }}
+        onMouseOut={()=>{
+          setIconConsen(classIcon);
+        }}
+        type="image"
+        src={newPdfIcon}
+      />
+        Formulaire de consentement pour patiente mineure
+      </a>
         </p>
         
       </label>

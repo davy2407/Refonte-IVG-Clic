@@ -44,6 +44,28 @@ import BlocGrossesseCon from "@components/Consultations/ElementsConsultations/Bl
 import BlocPriseSangEff from "@components/Consultations/ElementsConsultations/BlocPriseSangEff";
 import BlocDosage from "@components/Consultations/ElementsConsultations/BlocDosage";
 import BlocGroupeSang from "@components/Consultations/ElementsConsultations/BlocGroupeSang";
+import DeuxiemeTarifMaj from "@components/Tarification/DeuxiemeTarifMaj";
+import DeuxiemeTarifMin from "@components/Tarification/DeuxiemeTarifMin";
+import BlocRealConsultMin from "@components/Consultations/ElementConsultationMineure/BlocRealConsultMin";
+import BlocDeuxiemePriseCovid from "@components/Consultations/ElementsConsultations/BlocDeuxiemePriseCovid";
+import BlocEffetMife from "@components/Consultations/ElementsConsultations/BlocEffetMife";
+import BlocDeliMiso from "@components/Consultations/ElementsConsultations/BlocDeliMiso";
+import BlocIngeAnti from "@components/Consultations/ElementsConsultations/BlocIngeAnti";
+import BlocArretTravail from "@components/Consultations/ElementsConsultations/BlocArretTravail";
+import BlocContraChoisie from "@components/Consultations/ElementsConsultations/BlocContraChoisie";
+import DeuxiemePriseTarif from "@components/Tarification/DeuxiemePriseTarif";
+import DeuxiemePriseMinTarif from "@components/Tarification/DeuxiemePriseMinTarif";
+import PostIvgTarifMaj from "@components/Tarification/PostIvgTarifMaj";
+import PostIvgTarifMin from "@components/Tarification/PostIvgTarifMin";
+
+
+
+
+
+
+
+
+
 
 
 
@@ -295,6 +317,38 @@ const affichePremiereTarif = () => {
 
 const affichePremiereTarifMin = () => {
   let objetAAjouter = listeQuestionPre[15];
+  setCurrentQuestionPre([objetAAjouter]);
+}
+
+const afficheDeuxiemeTarifMaj = () => {
+  let objetAAjouter = listeQuestionPre[16]
+  setCurrentQuestionPre([objetAAjouter]);
+
+}
+
+const afficheDeuxiemeTarifMin = () => {
+  let objetAAjouter = listeQuestionPre[17]
+  setCurrentQuestionPre([objetAAjouter]);
+
+}
+
+const afficheDeuxiemePriseTarifMaj = () => {
+  let objetAAjouter = listeQuestionPre[18]
+  setCurrentQuestionPre([objetAAjouter]);
+}
+
+const afficheDeuxiemePriseTarifMin = () => {
+  let objetAAjouter = listeQuestionPre[19]
+  setCurrentQuestionPre([objetAAjouter]);
+}
+
+const afficheTarifPostIVGMaj = () => {
+  let objetAAjouter = listeQuestionPre[20]
+  setCurrentQuestionPre([objetAAjouter]);
+}
+
+const afficheTarifPostIVGMin = () => {
+  let objetAAjouter = listeQuestionPre[21]
   setCurrentQuestionPre([objetAAjouter]);
 }
 
@@ -556,6 +610,42 @@ const recupElTarif = (liste) =>{
         id : 15,
         objet : PremiereTarifMin,
         toggle : toggle
+      },
+      {
+        name : "Deuxième Tarification Majeure",
+        id : 16,
+        objet : DeuxiemeTarifMaj,
+        toggle : toggle
+      },
+      {
+        name : "Deuxième Tarification Mineure",
+        id : 17,
+        objet : DeuxiemeTarifMin,
+        toggle : toggle
+      },
+      {
+        name : "Deuxième Prise Médicamenteuse Tarification Majeure",
+        id : 18,
+        objet : DeuxiemePriseTarif,
+        toggle : toggle
+      },
+      {
+        name : "Deuxième Prise Médicamenteuse Tarification Mineure",
+        id : 19,
+        objet : DeuxiemePriseMinTarif,
+        toggle : toggle
+      },
+      {
+        name : "Tarification consultation Post IVG Majeure",
+        id : 20,
+        objet : PostIvgTarifMaj,
+        toggle : toggle
+      },
+      {
+        name : "Tarification consultation Post IVG Mineure",
+        id : 21,
+        objet : PostIvgTarifMin,
+        toggle : toggle
       }
 
     ]
@@ -708,7 +798,7 @@ const recupElTarif = (liste) =>{
         elementsCon : {
           name : "Deuxième consultation majeure",
           titre : "Deuxième consultation préalable à l’IVG/Recueil de consentement Majeure",
-          fonctionTarif : affichePremiereTarifMin,
+          fonctionTarif : afficheDeuxiemeTarifMaj,
           listeElementsConsulations : [
             {
               objet : BlocDeuxiemeCovid,
@@ -779,7 +869,7 @@ const recupElTarif = (liste) =>{
         elementsCon : {
           name : "Deuxième consultation mineure",
           titre : "Deuxième consultation préalable à l’IVG/Recueil de consentement Mineure",
-          fonctionTarif : affichePremiereTarifMin,
+          fonctionTarif : afficheDeuxiemeTarifMin,
           listeElementsConsulations : [
             {
               objet : BlocDeuxiemeCovid,
@@ -790,40 +880,48 @@ const recupElTarif = (liste) =>{
               id : 1
             },
             {
-              objet : BlocViolence,
+              objet : BlocAccMin,
               id : 2
             },
             {
-              objet : BlocGrossesseCon,
+              objet : BlocRealConsultMin,
               id : 3
             },
             {
-              objet : BlocAgeGesta,
+              objet : BlocViolence,
               id : 4
             },
             {
-              objet : BlocIST,
+              objet : BlocGrossesseCon,
               id : 5
             },
             {
-              objet : BlocPriseSangEff,
+              objet : BlocAgeGesta,
               id : 6
             },
             {
-              objet : BlocDosage,
+              objet : BlocIST,
               id : 7
             },
             {
-              objet : BlocGroupeSang,
+              objet : BlocPriseSangEff,
               id : 8
             },
             {
-              objet : BlocInfoContra,
+              objet : BlocDosage,
               id : 9
             },
             {
-              objet : BlocTabac,
+              objet : BlocGroupeSang,
               id : 10
+            },
+            {
+              objet : BlocInfoContra,
+              id : 11
+            },
+            {
+              objet : BlocTabac,
+              id : 12
             }
 
 
@@ -851,28 +949,136 @@ const recupElTarif = (liste) =>{
       {
         id : 6,
         elementsCon : {
-          name : "Deuxième prise médicamenteuse majeure"
+          name : "Deuxième prise médicamenteuse majeure",
+          titre : "Consultation deuxième prise médicamenteuse (facultative) : Majeure",
+          fonctionTarif : afficheDeuxiemePriseTarifMaj, 
+          listeElementsConsulations : [
+            {
+              objet : BlocDeuxiemePriseCovid,
+              id : 0
+            },
+            {
+              objet : BlocEffetMife,
+              id : 1
+            },
+            {
+              objet : BlocDeliMiso,
+              id : 2
+            },
+            {
+              objet : BlocIngeAnti,
+              id : 3
+            },
+            {
+              objet : BlocArretTravail,
+              id : 4
+            },
+            {
+              objet : BlocContraChoisie,
+              id : 5
+            }
+
+          ]
           
         }
       },
       {
         id : 7,
         elementsCon : {
-          name : "Deuxième prise médicamenteuse mineure"
+          name : "Deuxième prise médicamenteuse mineure",
+          titre : "Consultation deuxième prise médicamenteuse (facultative) : Mineure",
+          fonctionTarif : afficheDeuxiemePriseTarifMin, 
+          listeElementsConsulations : [
+            {
+              objet : BlocDeuxiemePriseCovid,
+              id : 0
+            },
+            {
+              objet : BlocAccMin,
+              id : 1
+            },
+            {
+              objet : BlocEffetMife,
+              id : 2
+            },
+            {
+              objet : BlocDeliMiso,
+              id : 3
+            },
+            {
+              objet : BlocIngeAnti,
+              id : 4
+            },
+            {
+              objet : BlocArretTravail,
+              id : 5
+            },
+            {
+              objet : BlocContraChoisie,
+              id : 6
+            }
+
+          ]
           
         }
       },
       {
         id : 8,
         elementsCon : {
-          name : "Troisième temps/ consultation de suivie majeure"
+          name : "Consultation post-IVG Majeure :",
+          titre : "Consultation post-IVG Majeure :",
+          fonctionTarif : afficheTarifPostIVGMaj,
+          listeElementsConsulations : [
+            {
+              objet : BlocContraChoisie,
+              id : 0
+            },
+            {
+              objet : BlocIST,
+              id : 1
+            },
+            {
+              objet : BlocHPV,
+              id : 2
+            },
+            {
+              objet : BlocTabac,
+              id : 3
+            }
+            
+
+          ]
+
+
           
         }
       },
       {
         id : 9,
         elementsCon : {
-          name : "Troisième temps/ consultation de suivie mineure"
+          name : "Consultation post-IVG Mineure :",
+          titre : "Consultation post-IVG Mineure :",
+          fonctionTarif : afficheTarifPostIVGMin, 
+          listeElementsConsulations : [
+            {
+              objet : BlocAcc,
+              id : 0
+            },
+            {
+              objet : BlocContraChoisie,
+              id : 1
+            },
+            {
+              objet : BlocIST,
+              id : 2
+            },
+            {
+              objet : BlocTabac,
+              id : 3
+            }
+            
+
+          ]
           
         }
       }

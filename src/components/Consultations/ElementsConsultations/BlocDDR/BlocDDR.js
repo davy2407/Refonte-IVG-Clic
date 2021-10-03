@@ -29,7 +29,7 @@ function BlocDDR(props) {
     {
       titre : "Nombre semaines SA : ",
       value : "",
-      titreBis : "+ jour : ",
+      titreBis : "",
       valueBis : "",
       reponse : 0
       
